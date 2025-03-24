@@ -17,7 +17,7 @@ const Operationsection = () => {
       icon1: "icon1-url", // Replace with the URL or source for your icon
       icon2: "icon2-url", // Replace with the URL or source for your icon
       icon3: "icon3-url", // Replace with the URL or source for your icon
-      image: "http://verzo.fra1.cdn.digitaloceanspaces.com/Originalcopy.png", // Replace with actual image URL for invoicing
+      image: "https://verzo.fra1.cdn.digitaloceanspaces.com/Originalcopy.png", // Replace with actual image URL for invoicing
     },
     {
       number: 2,
@@ -27,7 +27,7 @@ const Operationsection = () => {
       icon1: "icon1-url", // Replace with the URL or source for your icon
       icon2: "icon2-url", // Replace with the URL or source for your icon
       icon3: "icon3-url", // Replace with the URL or source for your icon
-      image: "http://verzo.fra1.cdn.digitaloceanspaces.com/Hero.png", // Replace with actual image URL for expense tracking
+      image: "https://verzo.fra1.cdn.digitaloceanspaces.com/Hero.png", // Replace with actual image URL for expense tracking
     },
     {
       number: 3,
@@ -37,7 +37,7 @@ const Operationsection = () => {
       icon1: "icon1-url", // Replace with the URL or source for your icon
       icon2: "icon2-url", // Replace with the URL or source for your icon
       icon3: "icon3-url", // Replace with the URL or source for your icon
-      image: "http://verzo.fra1.cdn.digitaloceanspaces.com/Originalcopy.png", // Replace with actual image URL for purchasing
+      image: "https://verzo.fra1.cdn.digitaloceanspaces.com/Originalcopy.png", // Replace with actual image URL for purchasing
     },
     {
       number: 4,
@@ -47,7 +47,7 @@ const Operationsection = () => {
       icon1: "icon1-url", // Replace with the URL or source for your icon
       icon2: "icon2-url", // Replace with the URL or source for your icon
       icon3: "icon3-url", // Replace with the URL or source for your icon
-      image: "http://verzo.fra1.cdn.digitaloceanspaces.com/Hero.png", // Replace with actual image URL for customer/vendor management
+      image: "https://verzo.fra1.cdn.digitaloceanspaces.com/Hero.png", // Replace with actual image URL for customer/vendor management
     },
   ];
 
