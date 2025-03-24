@@ -8,7 +8,7 @@ import { FeaturesSection } from "./FeatureSection";
 import { FeatureTabs } from "./FeatureTabs";
 import { HeroCarousel } from "./Herosection";
 import Operationsection from "./OperationSection";
-import { PricingCTA } from "./PricingCta";
+// import { PricingCTA } from "./PricingCta";
 import { Testimonials } from "./Testimonial";
 import { TrustedCompanies } from "./TrustedCompanies";
 
@@ -22,7 +22,7 @@ const HomePage = () => {
         <FeaturesSection />
         <FeatureTabs />
         <CallToAction />
-        <PricingCTA />
+        {/* <PricingCTA /> */}
         {/* <SmallBusinessOwnersSection /> */}
         <BusinessTypesSection />
         <Testimonials />
