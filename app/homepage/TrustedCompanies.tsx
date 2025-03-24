@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function TrustedCompanies() {
   return (
-    <div className="w-full bg-black py-12">
+    <div className="w-full bg-black py-12 ">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <p className="text-white text-xl">Trusted by the best teams</p>

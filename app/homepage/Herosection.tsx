@@ -4,29 +4,33 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
+
+const src = "https://verzo.fra1.cdn.digitaloceanspaces.com/Hero.png";
 const slides = [
   {
-    title: "Your All-in-One Bookkeeping Solution",
+    title: "Invoicing Simplified",
     description:
-      "Transform the way you work with tools designed to save time, reduce stress, and deliver results.",
-    image: "/heroImage.svg", // Image in public directory
+      "Create professional invoices, accept online payments, and track payments effortlessly.",
+    image: src, // Image in public directory
     cta: "Get 30 days free",
   },
   {
-    title: "Smart Invoicing Made Simple",
+    title: "Expense Tracking Made Easy",
     description:
-      "Create and send professional invoices in seconds. Get paid faster with automated reminders and tracking.",
-    image: "/heroImage.svg", // Image in public directory
+      "Effortlessly manage your expenses and gain a clear view of your financial health.",
+    image: src, // Image in public directory
     cta: "Get 30 days free",
   },
   {
-    title: "Expense Tracking That Works",
+    title: "Efficient Purchase Management",
     description:
-      "Capture receipts, categorize expenses, and generate reports automatically. Stay tax-ready all year round.",
-    image: "/heroImage.svg", // Image in public directory
+      "Centralize supplier information and streamline your procurement process.",
+    image: src, // Image in public directory
     cta: "Get 30 days free",
   },
 ];
+
+
 
 export function HeroCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -39,7 +43,7 @@ export function HeroCarousel() {
   }, []);
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-r from-white to-blue-50">
+    <div className="relative overflow-hidden bg-gradient-to-r from-white to-blue-50 pt-[80px]">
       <div className="max-w-full mx-auto">
         <div className="relative h-[600px] md:h-[700px]">
           {slides.map((slide, index) => (
@@ -54,15 +58,17 @@ export function HeroCarousel() {
             >
               <div className="flex flex-col md:flex-row h-full">
                 {/* Content section with consistent spacing */}
-                <div className="w-full md:w-1/2 flex items-center">
-                  <div className="ml-[14%] max-w-[388px] space-y-6 pr-4">
-                    <h1 className="text-4xl font-bold tracking-tight ">
+                <div className="w-full md:w-1/2 flex mt-[70px]">
+                  <div className="ml-[14%] lg:max-w-[600px] md:max-w-[800px] md:min-w-[400px] space-y-6 pr-4">
+                    <h1 className="md:leading-[59px] leading-9 md:text-5xl text-3xl font-medium tracking-tight text-primary-black ">
                       {slide.title}
                     </h1>
-                    <p className="text-xl text-primary-greyBold">{slide.description}</p>
+                    <p className="text-lg md:text-[22px] lg:max-w-[500px] md:max-w-[750px] max-w-[500px] font-normal md:leading-8 leading-6 text-primary-greyBold">
+                      {slide.description}
+                    </p>
                     <Button
                       size="lg"
-                      className=" bg-primary-brandBlue hover:bg-blue-600 text-white px-8 rounded-[10px]"
+                      className=" bg-primary-brandBlue hover:bg-blue-600 text-white px-8 py-5 rounded-[10px]"
                     >
                       {slide.cta}
                     </Button>
@@ -70,8 +76,8 @@ export function HeroCarousel() {
                 </div>
 
                 {/* Image section - positioned to the right edge */}
-                <div className="w-full md:w-1/2 relative h-[400px] md:h-full bg-primary-brandTint">
-                  <div className="absolute inset-0 md:right-0 md:left-auto md:w-[120%]">
+                <div className="lg:max-w-[580px] max-w-[600px] min-w-[300px] md:min-w-[550px] lg:min-w-[450px] lg:mt-0 lg:flex-grow relative ">
+                  {/* <div className="absolute inset-0 md:right-0 md:left-auto md:w-[120%]">
                     <Image
                       src={slide.image}
                       alt={`${slide.title}`}
@@ -79,6 +85,19 @@ export function HeroCarousel() {
                       className="object-contain object-right"
                       priority={index === 0}
                     />
+                  </div> */}
+
+                  <div className="mt-6 lg:max-w-[580px] max-w-[600px] min-w-[300px] md:min-w-[600px] lg:min-w-[450px] lg:mt-0 lg:flex-grow relative">
+                    <div className=" z-20 relative max-w-[500px] md:max-w-none">
+                      <Image
+                        className=" mt-[30px]"
+                        alt="Hero"
+                        width={1000}
+                        height={1000}
+                        src={slide.image}
+                      />
+                    </div>
+                    <div className="absolute hidden md:flex top-[80px] md:top-[140px] md:left-[280px] left-[150px] md:w-[480px] md:h-[480px] w-[200px] h-[200px] rounded-full purplegradient z-[10] overflow-y-hidden"></div>
                   </div>
                 </div>
               </div>

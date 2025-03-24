@@ -19,15 +19,6 @@ export function FeaturesSection() {
   return (
     <div className="w-full bg-primary-brandBlue py-20 relative">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="h-[300px] ">
-          {/* <Image
-            src="/laptop.svg"
-            alt="Dashboard Interface"
-            width={800}
-            height={500}
-            className="mx-auto"
-          /> */}
-        </div>
 
         <h2 className="text-white text-4xl font-bold text-center mb-16">
           Your All-in-One Bookkeeping Solution

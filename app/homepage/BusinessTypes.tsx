@@ -7,27 +7,18 @@ import { Button } from "@/components/ui/button";
 
 const businessTypes = [
   {
-    title: "Freelancers",
+    title: "Solopreneurs",
     description: "Create and send professional invoices in minutes.",
     image: "/freelancer.svg",
   },
   {
-    title: "Contractors",
+    title: "Small Businesses",
     description: "Create and send professional invoices in minutes.",
     image: "/contractor.svg",
   },
+
   {
-    title: "Enterprises",
-    description: "Create and send professional invoices in minutes.",
-    image: "/enterprises.svg",
-  },
-  {
-    title: "E-commerce",
-    description: "Create and send professional invoices in minutes.",
-    image: "/freelancer.svg",
-  },
-  {
-    title: "Startups",
+    title: "Freelancers",
     description: "Create and send professional invoices in minutes.",
     image: "/enterprises.svg",
   },
