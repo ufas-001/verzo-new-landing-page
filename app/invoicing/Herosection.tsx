@@ -4,6 +4,7 @@ import Image from "next/image";
 const src = "https://verzo.fra1.cdn.digitaloceanspaces.com/Hero.png";
 const slides = [
   {
+    header: "Invoice",
     title: "Create Stunning Invoices in Seconds",
     description:
       "Say goodbye to manual invoicing! With Verzo, crafting professional invoices is a breeze.",
@@ -27,14 +28,56 @@ const HeroSection = () => {
                 {/* Content section with consistent spacing */}
                 <div className="w-full md:w-1/2 flex mt-[70px]">
                   <div className="ml-[14%] lg:max-w-[500px] md:max-w-[800px] md:min-w-[400px] space-y-6 pr-4">
-                    
-                      <h1 className="md:leading-[59px] leading-9 md:text-5xl text-3xl font-medium tracking-tight text-primary-black ">
-                        {slide.title}
-                      </h1>
-                      <p className="text-lg md:text-[22px] lg:max-w-[500px] md:max-w-[750px] max-w-[500px] font-normal md:leading-8 leading-6 text-primary-greyBold">
-                        {slide.description}
-                      </p>
-                   
+                    <div className="relative flex gap-x-2 items-center md:text-xl text-lg text-primary-brandBlue">
+                      <span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M7.79922 7.8H16.1992M7.79922 12.6H16.1992M5.75922 3H18.2392C19.1008 3 19.7992 3.80589 19.7992 4.8V21L17.1992 19.2L14.5992 21L11.9992 19.2L9.39922 21L6.79922 19.2L4.19922 21V4.8C4.19922 3.80589 4.89765 3 5.75922 3Z"
+                            stroke="url(#paint0_linear_6891_5577)"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <defs>
+                            <linearGradient
+                              id="paint0_linear_6891_5577"
+                              x1="4.19922"
+                              y1="3.30435"
+                              x2="23.1763"
+                              y2="8.57133"
+                              gradientUnits="userSpaceOnUse"
+                            >
+                              <stop
+                                offset="0.307292"
+                                stopColor="#027DFF"
+                                stopOpacity="0.9"
+                              />
+                              <stop
+                                offset="0.494792"
+                                stopColor="#027DFF"
+                                stopOpacity="0.9"
+                              />
+                              <stop offset="0.958333" stopColor="#027DFF" />
+                            </linearGradient>
+                          </defs>
+                        </svg>
+                      </span>
+                      {slide.header}
+                    </div>
+
+                    <h1 className="md:leading-[59px] leading-9 md:text-5xl text-3xl font-medium tracking-tight text-primary-black ">
+                      {slide.title}
+                    </h1>
+                    <p className="text-lg md:text-[22px] lg:max-w-[500px] md:max-w-[750px] max-w-[500px] font-normal md:leading-8 leading-6 text-primary-greyBold">
+                      {slide.description}
+                    </p>
+
                     <Button
                       size="lg"
                       className=" bg-primary-brandBlue hover:bg-blue-600 text-white px-8 py-5 rounded-[10px]"
