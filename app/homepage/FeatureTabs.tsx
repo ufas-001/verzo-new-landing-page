@@ -60,10 +60,8 @@ export function FeatureTabs() {
   return (
     <div className="w-full bg-primary-darkBlue py-20">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-white text-4xl md:text-5xl font-bold text-center mb-12">
-          Improved management at
-          <br />
-          every growth stage
+        <h2 className="text-white md:text-5xl font-medium text-center mb-12">
+          Improved management at every growth stage
         </h2>
 
         {/* Tab buttons */}
@@ -126,7 +124,7 @@ export function FeatureTabs() {
                   }
                 `}
               >
-                <h3 className="text-3xl font-bold mb-4">
+                <h3 className="text-3xl font-medium mb-4">
                   {tab.title}
                 </h3>
                 <p className="text-xl text-white/90 mb-8">{tab.description}</p>

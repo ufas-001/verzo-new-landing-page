@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer className="bg-primary-brandBlue text-white py-16">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+        <div className="flex justify-between mb-12">
           {/* Logo and Social Links - Left Side */}
           <div className="md:col-span-3 space-y-6">
             <Link href="/" className="text-2xl font-bold block mb-4">
@@ -33,11 +33,11 @@ export default function Footer() {
           </div>
 
           {/* Empty space for alignment */}
-          <div className="hidden md:block md:col-span-3"></div>
+          {/* <div className="hidden md:block md:col-span-3"></div> */}
 
           {/* Links - Right Side */}
           <div className="md:col-span-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-24">
               {/* Product Links */}
               <div>
                 <h3 className="text-lg mb-4">Product</h3>

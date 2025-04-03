@@ -20,7 +20,7 @@ export function FeaturesSection() {
     <div className="w-full bg-primary-brandBlue py-20 relative">
       <div className="max-w-7xl mx-auto px-4">
 
-        <h2 className="text-white text-4xl font-bold text-center mb-16">
+        <h2 className="text-white text-5xl font-medium text-center mb-16">
           Your All-in-One Bookkeeping Solution
         </h2>
 

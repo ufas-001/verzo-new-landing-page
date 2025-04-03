@@ -39,15 +39,15 @@ const features = [
                 gradientUnits="userSpaceOnUse"
               >
                 <stop offset="0.307292" stopColor="#027DFF" stopOpacity="0.9" />
-                <stop offset="0.494792" stopColor="#8C01E8" stopOpacity="0.9" />
-                <stop offset="0.958333" stopColor="#6275E9" />
+                <stop offset="0.494792" stopColor="#027DFF" stopOpacity="0.9" />
+                <stop offset="0.958333" stopColor="#027DFF" />
               </linearGradient>
             </defs>
           </svg>
         ),
         header: "Create - Send Invoices",
         description: "Create invoices to send them to your customer",
-        link: "https://beta.verzo.app/",
+        link: "/invoicing",
       },
       {
         icon: (
@@ -72,8 +72,8 @@ const features = [
                 gradientUnits="userSpaceOnUse"
               >
                 <stop offset="0.307292" stopColor="#027DFF" stopOpacity="0.9" />
-                <stop offset="0.494792" stopColor="#8C01E8" stopOpacity="0.9" />
-                <stop offset="0.958333" stopColor="#6275E9" />
+                <stop offset="0.494792" stopColor="#027DFF" stopOpacity="0.9" />
+                <stop offset="0.958333" stopColor="#027DFF" />
               </linearGradient>
             </defs>
           </svg>
@@ -108,8 +108,8 @@ const features = [
                 gradientUnits="userSpaceOnUse"
               >
                 <stop offset="0.307292" stopColor="#027DFF" stopOpacity="0.9" />
-                <stop offset="0.494792" stopColor="#8C01E8" stopOpacity="0.9" />
-                <stop offset="0.958333" stopColor="#6275E9" />
+                <stop offset="0.494792" stopColor="#027DFF" stopOpacity="0.9" />
+                <stop offset="0.958333" stopColor="#027DFF" />
               </linearGradient>
             </defs>
           </svg>
@@ -228,7 +228,11 @@ export function FixedHeader() {
                       By Product
                     </p>
                     {item.byProduct.map((product, productIndex) => (
-                      <Link href={product.link} key={productIndex}>
+                      <Link
+                        href={product.link}
+                        key={productIndex}
+                        onClick={() => setHoveredMenu(null)}
+                      >
                         <button className="flex flex-col gap-y-2 p-4 hover:bg-gray-50 hover:text-gray-700 text-gray-400 duration-100 transition-all ease-in-out cursor-pointer rounded-[14px]">
                           <div className="flex items-center">
                             {product.icon && (

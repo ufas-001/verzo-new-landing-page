@@ -3,12 +3,11 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 // import { Card, CardContent } from "@/components/ui/card";
 
-
 export function CallToAction() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-20">
-      <div className=" rounded-3xl  overflow-hidden">
-        <div className="p-8 md:p-12">
+      <div className="">
+        <div className="">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div className="space-y-4">
               <div className="space-y-1">

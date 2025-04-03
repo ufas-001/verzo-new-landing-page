@@ -64,7 +64,7 @@ const Operationsection = () => {
   return (
     <div className="w-full bg-primary-background pt-[80px] md:pb-[50px] pb-[20px]">
       <div className="flex flex-col lg:gap-y-[30px] items-center max-w-7xl mx-auto">
-        <div className="md:leading-[59px] md:text-4xl text-3xl leading-10 text-center font-bold tracking-tight text-primary-black lg:max-w-full max-w-[750px] min-w-[300px]">
+        <div className="md:leading-[59px] md:text-5xl  leading-10 text-center font-medium tracking-tight text-primary-black lg:max-w-full max-w-[750px] min-w-[300px]">
           Streamline your business with our tools
         </div>
         <div className="w-full">
@@ -97,7 +97,7 @@ const Operationsection = () => {
                             cy="18"
                             r="18"
                             fill={
-                              currentIndex === index ? "#EDF6FF" : "#F8F8F8"
+                              currentIndex === index ? "#027DFF" : "#F8F8F8"
                             }
                           />
                           <circle
@@ -107,7 +107,7 @@ const Operationsection = () => {
                             cy="18"
                             r="12"
                             fill={
-                              currentIndex === index ? "#1E35CF" : "#D9D9D9"
+                              currentIndex === index ? "#027DFF" : "#D9D9D9"
                             }
                           />
                         </g>

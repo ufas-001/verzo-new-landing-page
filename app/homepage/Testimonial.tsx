@@ -52,7 +52,7 @@ export function Testimonials() {
   return (
     <section className="w-full bg-white pb-20">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-16">
+        <h2 className="text-5xl font-medium text-center mb-16">
           Verzo helps 17,000+ merchants manage their books
         </h2>
 

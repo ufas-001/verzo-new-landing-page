@@ -71,3 +71,37 @@ body {
     )
   );
 }
+
+.text-gradient {
+  background: linear-gradient(
+    108deg,
+    rgba(2, 125, 255, 0.9) 30.91%,
+    rgba(140, 1, 232, 0.9) 49.51%,
+    #6275e9 95.51%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.border-gradient {
+  position: relative;
+  border: none; /* Remove the original border */
+}
+
+.border-gradient::before {
+  content: "";
+  position: absolute;
+  top: -4px; /* Negative of the border width */
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(
+    108deg,
+    rgba(2, 125, 255, 0.9) 30.91%,
+    rgba(140, 1, 232, 0.9) 49.51%,
+    #6275e9 95.51%
+  );
+  z-index: -1;
+  border-radius: inherit; /* Keep the same border radius */
+}
