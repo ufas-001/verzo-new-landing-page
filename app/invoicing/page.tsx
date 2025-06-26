@@ -1,3 +1,4 @@
+import { FixedHeader } from "@/components/header"
 import FaqSection from "../pricing/FaqSection"
 import Footer from "../pricing/Footer"
 import { CallToAction } from "./CallToAction"
@@ -13,6 +14,7 @@ const Invoicing = () => {
 
     return (
         <div>
+            <FixedHeader />
             <HeroSection />
             <InvoicingFeatures />
             <VirtualCardSection />

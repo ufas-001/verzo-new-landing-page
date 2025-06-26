@@ -80,7 +80,7 @@ const features = [
         ),
         header: "Manage Purchase Orders",
         description: "Create and send your puchase orders to a merchant ",
-        link: "https://beta.verzo.app/",
+        link: "/purchase",
       },
       {
         icon: (
@@ -116,7 +116,7 @@ const features = [
         ),
         header: "Manage your expenses",
         description: "Track Your Business Expenses Without Lifting a Finger",
-        link: "https://beta.verzo.app/",
+        link: "/expense",
       },
     ],
     byUseCase: [
