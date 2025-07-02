@@ -9,7 +9,7 @@ import { ChevronDown } from "lucide-react";
 
 const FaqSection = () => {
   return (
-    <div className="max-w-7xl mx-auto  py-[80px]">
+    <div className="max-w-7xl mx-auto px-6 md:px-8  py-[80px]">
       <div className="flex flex-col md:flex-row justify-between gap-y-6 md:gap-x-10">
         <div className=" flex items-center md:items-start flex-col gap-y-4 pt-[30px] lg:min-w-[250px]">
           <h1 className="font-medium text-3xl md:text-3xl height-normal leading-10 lg:max-w-[347px]">

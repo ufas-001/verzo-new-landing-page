@@ -65,7 +65,7 @@ export function FeatureTabs() {
         </h2>
 
         {/* Tab buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
+        <div className="hidden md:flex flex-wrap md:justify-center gap-4 mb-16">
           {tabs.map((tab) => (
             <Button
               key={tab.id}
@@ -88,7 +88,7 @@ export function FeatureTabs() {
         {/* Content area */}
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
           {/* Image */}
-          <div className="relative h-[402px] overflow-hidden order-2 md:order-1">
+          <div className="relative h-[402px] md:w-full overflow-hidden order-2 md:order-1">
             {tabs.map((tab) => (
               <div
                 key={tab.id}
@@ -116,7 +116,7 @@ export function FeatureTabs() {
             {tabs.map((tab) => (
               <div
                 key={tab.id}
-                className={`transition-opacity duration-500 max-w-[388px]
+                className={`transition-opacity duration-500 max-w-md mx-auto  md:max-w-[388px]
                   ${
                     activeTab === tab.id
                       ? "opacity-100"
@@ -124,9 +124,7 @@ export function FeatureTabs() {
                   }
                 `}
               >
-                <h3 className="text-3xl font-medium mb-4">
-                  {tab.title}
-                </h3>
+                <h3 className="md:text-3xl font-medium mb-4">{tab.title}</h3>
                 <p className="text-xl text-white/90 mb-8">{tab.description}</p>
                 <Button
                   variant="link"

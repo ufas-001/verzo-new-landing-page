@@ -7,6 +7,7 @@ type Feature = {
   image: string
 };
 
+
 const features: Feature[] = [
   {
     title: "Create invoices quickly",
@@ -30,44 +31,55 @@ const features: Feature[] = [
 
 const InvoicingFeatures = () => {
   return (
-    <section className="w-full py-20 bg-primary-bgTint">
+    <section className="w-full py-12 md:py-20 bg-primary-bgTint">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-medium text-primary-brandBlue text-center mb-12">
+        {/* Main heading */}
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-primary-brandBlue text-center mb-8 md:mb-12 leading-tight">
           Start with the best invoicing tool
         </h2>
 
         {/* Feature highlights */}
-        <div className="flex flex-wrap justify-center gap-x-16 gap-y-6 mb-12">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center gap-4 sm:gap-x-8 lg:gap-x-16 gap-y-4 mb-8 md:mb-12">
           {[
             "Customise with your brand assets",
             "Personalise with client details",
             "Share instantly",
           ].map((highlight, index) => (
-            <div key={index} className="flex items-center gap-2">
+            <div
+              key={index}
+              className="hidden md:flex items-center gap-2 text-center sm:text-left"
+            >
               <CheckIcon2 />
-              <span className="text-lg">{highlight}</span>
+              <span className="text-base md:text-lg">{highlight}</span>
             </div>
           ))}
         </div>
 
         {/* Feature cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 place-items-center">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-primary-brandTint rounded-xl p-4 w-[362px] flex flex-col items-center"
+              className="bg-primary-brandTint rounded-xl p-4 md:p-6 w-full max-w-sm md:max-w-none flex flex-col"
             >
-              <div className="w-[319px] h-[196px] overflow-hidden rounded-[15px] relative">
+              {/* Image container */}
+              <div className="w-full aspect-[319/196] overflow-hidden rounded-[15px] relative mb-4">
                 <Image
-                  src={feature.image}
+                  src={feature.image || "/placeholder.svg"}
                   alt={feature.title}
                   fill
-                  objectFit="cover"
+                  className="object-cover"
                 />
               </div>
-              <h3 className="text-xl font-bold self-start">{feature.title}</h3>
-              <div className=" pt-4">
-                <p className="text-gray-600">{feature.description}</p>
+
+              {/* Content */}
+              <div className="flex flex-col flex-1">
+                <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
             </div>
           ))}

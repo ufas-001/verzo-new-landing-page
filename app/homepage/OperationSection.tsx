@@ -63,7 +63,7 @@ const Operationsection = () => {
 
   return (
     <div className="w-full bg-primary-background pt-[80px] md:pb-[50px] pb-[20px]">
-      <div className="flex flex-col lg:gap-y-[30px] items-center max-w-7xl mx-auto">
+      <div className="flex flex-col lg:gap-y-[30px] items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="md:leading-[59px] md:text-5xl  leading-10 text-center font-medium tracking-tight text-primary-black lg:max-w-full max-w-[750px] min-w-[300px]">
           Streamline your business with our tools
         </div>

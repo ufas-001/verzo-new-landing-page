@@ -3,9 +3,19 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: [
-      "cdn.filestackcontent.com",
-      "verzo.fra1.cdn.digitaloceanspaces.com",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.filestackcontent.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "verzo.fra1.cdn.digitaloceanspaces.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
     disableStaticImages: true, // Disable Image Optimization
   },

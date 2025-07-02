@@ -47,13 +47,13 @@ export function BusinessTypesSection() {
   return (
     <section className="w-full bg-white">
       {/* Image Section */}
-      <div className="relative pb-24">
+      <div className="md:relative pb-24">
         {/* Background Images with Fade Transition */}
-        <div className="relative h-[600px] w-full overflow-hidden">
+        <div className="hidden md:flex relative md:h-[600px] w-full overflow-hidden">
           {backgroundImages.map((image, index) => (
             <div
               key={index}
-              className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+              className="md:absolute inset-0 transition-opacity duration-1000 ease-in-out"
               style={{
                 opacity: index === currentImageIndex ? 1 : 0,
                 zIndex: index === currentImageIndex ? 10 : 0,
@@ -70,7 +70,7 @@ export function BusinessTypesSection() {
           ))}
 
           {/* Hero Content */}
-          <div className="absolute inset-0 flex items-start z-20">
+          <div className="md:absolute inset-0 flex items-start z-20">
             <div className="container mx-auto px-4 py-12">
               <div className="ml-8 md:ml-16 lg:ml-24 pt-8">
                 {/* Uncomment if you want to add titles
@@ -86,7 +86,7 @@ export function BusinessTypesSection() {
         </div>
 
         {/* Business Types Cards - Positioned to overlap with image */}
-        <div className="absolute bottom-[50px] left-0 right-0 transform translate-y-1/2 z-30">
+        <div className="md:absolute md:bottom-[50px] md:left-0 md:right-0 md:transform md:translate-y-1/2 z-30">
           <div className="container mx-auto px-4">
             <div className="bg-blue-900 rounded-[15px] overflow-hidden max-w-6xl mx-auto shadow-xl">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -121,7 +121,7 @@ export function BusinessTypesSection() {
       </div>
 
       {/* Spacer for content below the cards */}
-      <div className="h-64"></div>
+      <div className="md:h-64"></div>
     </section>
   );
 }

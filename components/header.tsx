@@ -4,9 +4,10 @@ import { HoverCard } from "@radix-ui/react-hover-card";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
-import { ArrowUpDown, ChevronDown, ChevronUp, Mail, Phone, PlusCircle, Scroll } from "lucide-react";
+import { ArrowUpDown, ChevronDown, ChevronUp, Mail, Menu, Phone, PlusCircle, Scroll } from "lucide-react";
 import { Button } from "./ui/button";
 import React from "react";
+import Mobilemenu from "./MobileMenu";
 
 
 
@@ -165,6 +166,10 @@ export function FixedHeader() {
   const [notificationVisible, setNotificationVisible] = useState(true);
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
    const emailAddress = "technology@verzo.app";
+   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+   const handleCloseMobileMenu = () => {
+     setMobileMenuOpen(false);
+   };
 
   useEffect(() => {
     const handleNotificationClose = () => {
@@ -182,38 +187,266 @@ export function FixedHeader() {
   }, []);
 
   return (
-    <header
-      className="border-b fixed left-0 right-0 w-full bg-white transition-all duration-300 z-50"
-      style={{ top: notificationVisible ? "2.5rem" : 0 }}
-    >
-      <nav className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-        <Link href="/">
-          <Verzologosmall />
-        </Link>
-        <div className="hidden md:flex items-center gap-14">
-          {features.map((item) => (
+    <>
+      <header
+        className="border-b fixed left-0 right-0 w-full bg-white transition-all duration-300 z-50"
+        style={{ top: notificationVisible ? "2.5rem" : 0 }}
+      >
+        <nav className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+          <Link href="/">
+            <Verzologosmall />
+          </Link>
+          <div className="hidden md:flex items-center gap-14">
+            {features.map((item) => (
+              <HoverCard
+                openDelay={200}
+                closeDelay={100}
+                onOpenChange={(open) => {
+                  if (open) setHoveredMenu("feature");
+                  else if (hoveredMenu === "feature") setHoveredMenu(null);
+                }}
+                key={item.name}
+              >
+                <HoverCardTrigger className="text-gray-600 flex flex-row items-center gap-x-[6px] text-primary-greytext hover:text-primary-brandBlue cursor-pointer transition-colors">
+                  <span className="text-black text-lg">Feature</span>
+                  <div className="relative w-4 h-4">
+                    <ChevronDown
+                      className={`w-4 h-4 absolute transition-all duration-300 ${
+                        hoveredMenu === "feature"
+                          ? "opacity-0 transform rotate-180"
+                          : "opacity-100"
+                      }`}
+                    />
+                    <ChevronUp
+                      className={`w-4 h-4 absolute transition-all duration-300 ${
+                        hoveredMenu === "feature"
+                          ? "opacity-100 transform rotate-0"
+                          : "opacity-0 transform -rotate-180"
+                      }`}
+                    />
+                  </div>
+                </HoverCardTrigger>
+
+                <HoverCardContent className="w-screen mr-[3px] bg-white flex flex-col gap-y-[31px] shadow-md mt-[16px] rounded-b-[30px] h-[500px]">
+                  <div className="w-[85%] mx-auto flex flex-row gap-x-[56px] justify-between pt-[45px] pb-[72px] h-full">
+                    <div className="gap-y-[16px] flex flex-col w-1/3 h-full">
+                      <p className="text-[16px] text-primary-greytext pl-[16px]">
+                        By Product
+                      </p>
+                      {item.byProduct.map((product, productIndex) => (
+                        <Link
+                          href={product.link}
+                          key={productIndex}
+                          onClick={() => setHoveredMenu(null)}
+                        >
+                          <button className="flex flex-col gap-y-2 p-4 hover:bg-gray-50 hover:text-gray-700 text-gray-400 duration-100 transition-all ease-in-out cursor-pointer rounded-[14px]">
+                            <div className="flex items-center">
+                              {product.icon && (
+                                <div className="mr-2 h-4 mt-[-2px]">
+                                  {product.icon}
+                                </div>
+                              )}
+                              <h2 className="text-[16px] font-medium text-gray-700">
+                                {product.header}
+                              </h2>
+                            </div>
+                            <p className="text-[14px] text-start">
+                              {product.description}
+                            </p>
+                          </button>
+                        </Link>
+                      ))}
+                    </div>
+                    <div className="gap-y-[16px] flex flex-col w-1/3 h-full">
+                      <p className="text-[16px] text-primary-greytext pl-[16px]">
+                        By Use Case
+                      </p>
+                      {item.byUseCase.map((useCase, useCaseIndex) => (
+                        <div
+                          key={useCaseIndex}
+                          className="flex flex-col gap-y-2 p-4 hover:bg-gray-50 hover:text-gray-700 text-gray-400 duration-100 transition-all ease-in-out cursor-pointer rounded-[14px]"
+                        >
+                          <div className="flex items-center">
+                            <h2 className="text-[16px] font-medium text-gray-700">
+                              {useCase.header}
+                            </h2>
+                          </div>
+                          <p className="text-[14px]">{useCase.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <button className="w-1/3 bg-gray-100 bg-opacity-70 cursor-default rounded-[24px] flex flex-col justify-center items-start gap-y-[24px] h-[240px] p-[32px]">
+                      <p className="text-[17px] text-primary-greytext">
+                        Useful links
+                      </p>
+                      <ul className="flex flex-col gap-y-[20px]">
+                        <Link href="https://beta.verzo.app/" target="_blank">
+                          <li className="flex flex-row gap-x-[14px] items-center cursor-pointer text-[16px] font-medium text-gray-700">
+                            <PlusCircle className="text-gray-500 w-5 h-5" />
+                            Sign up
+                          </li>
+                        </Link>
+                        <div>
+                          <Link target="_blank" href="https://blog.verzo.app/">
+                            <li className="flex flex-row gap-x-[14px] items-center text-[16px] font-medium text-gray-700">
+                              <Scroll className="text-gray-500 w-5 h-5" />
+                              Our Blog
+                            </li>
+                          </Link>
+                        </div>
+                        <Link href={`mailto:${emailAddress}`}>
+                          <li className="flex flex-row gap-x-[14px] items-center cursor-pointer text-[16px] font-medium text-gray-700">
+                            <Mail className="text-gray-500 w-5 h-5" />
+                            Send us a mail
+                          </li>
+                        </Link>
+                      </ul>
+                    </button>
+                  </div>
+                </HoverCardContent>
+              </HoverCard>
+            ))}
+
+            <Link
+              href="/pricing"
+              className="text-black text-lg hover:text-gray-900"
+            >
+              Pricing
+            </Link>
+            {resources.map((item) => (
+              <HoverCard
+                openDelay={200}
+                closeDelay={100}
+                onOpenChange={(open) => {
+                  if (open) setHoveredMenu("company");
+                  else if (hoveredMenu === "company") setHoveredMenu(null);
+                }}
+                key={item.name}
+              >
+                <HoverCardTrigger className="text-gray-600 flex flex-row items-center gap-x-[6px] text-primary-greytext hover:text-primary-brandBlue cursor-pointer transition-colors">
+                  <span className="text-black text-lg">Company</span>
+                  <div className="relative w-4 h-4">
+                    <ChevronDown
+                      className={`w-4 h-4 absolute transition-all duration-300 ${
+                        hoveredMenu === "company"
+                          ? "opacity-0 transform rotate-180"
+                          : "opacity-100"
+                      }`}
+                    />
+                    <ChevronUp
+                      className={`w-4 h-4 absolute transition-all duration-300 ${
+                        hoveredMenu === "company"
+                          ? "opacity-100 transform rotate-0"
+                          : "opacity-0 transform -rotate-180"
+                      }`}
+                    />
+                  </div>
+                </HoverCardTrigger>
+
+                <HoverCardContent className="w-screen mr-[3px] flex flex-col gap-y-[31px] bg-white shadow-md mt-[16px] rounded-b-[30px] h-[500px]">
+                  <div className="w-[85%] mx-auto flex flex-row gap-x-[56px] justify-between pt-[45px] pb-[72px] h-full">
+                    <div className="gap-y-[16px] flex flex-col w-1/3 h-full">
+                      {item.byProduct.map((product, productIndex) => (
+                        <React.Fragment key={productIndex}>
+                          {product.link.includes("blog") ? (
+                            <a
+                              href={product.link}
+                              className="flex flex-col gap-y-2 p-4 hover:bg-gray-50 hover:text-gray-700 text-gray-700 rounded-[14px]"
+                            >
+                              <div className="flex items-center">
+                                <h2 className="text-[16px] font-medium">
+                                  {product.header}
+                                </h2>
+                              </div>
+                              <p className="text-[14px] text-start">
+                                {product.description}
+                              </p>
+                            </a>
+                          ) : (
+                            <button
+                              className="flex flex-col gap-y-2 p-4 bg-gray-50 text-gray-500 cursor-not-allowed rounded-[14px]"
+                              disabled
+                            >
+                              <div className="flex items-center">
+                                <h2 className="text-[16px] font-medium">
+                                  {product.header}
+                                </h2>
+                              </div>
+                              <p className="text-[14px] text-start">
+                                {product.description}
+                              </p>
+                            </button>
+                          )}
+                        </React.Fragment>
+                      ))}
+                    </div>
+                    <div className="gap-y-[16px] flex flex-col w-1/3 h-full">
+                      {item.byUseCase.map((useCase, useCaseIndex) => (
+                        <button
+                          key={useCaseIndex}
+                          className="flex flex-col gap-y-2 p-4 bg-gray-50 text-gray-500 cursor-not-allowed rounded-[14px]"
+                          disabled
+                        >
+                          <div className="flex items-center">
+                            <h2 className="text-[16px] font-medium text-gray-500">
+                              {useCase.header}
+                            </h2>
+                          </div>
+                          <p className="text-[14px]">{useCase.description}</p>
+                        </button>
+                      ))}
+                    </div>
+                    <button className="w-1/3 bg-gray-100 bg-opacity-70 cursor-default rounded-[24px] flex flex-col justify-center items-start gap-y-[24px] h-[240px] p-[32px]">
+                      <p className="text-[17px] text-primary-greytext">
+                        Useful links
+                      </p>
+                      <ul className="flex flex-col gap-y-[20px]">
+                        <Link href="/pricing">
+                          <li className="flex flex-row gap-x-[14px] items-center cursor-pointer text-[16px] font-medium text-gray-700">
+                            <ArrowUpDown className="text-gray-500 w-5 h-5" />
+                            Verzo Perks
+                          </li>
+                        </Link>
+                        <Link target="_blank" href="https://blog.verzo.app/">
+                          <li className="flex flex-row gap-x-[14px] items-center text-[16px] font-medium text-gray-700">
+                            <Scroll className="text-gray-500 w-5 h-5" />
+                            Our Blog
+                          </li>
+                        </Link>
+                        <Link href="tel:09066181506">
+                          <li className="flex flex-row gap-x-[14px] items-center cursor-pointer text-[16px] font-medium text-gray-700">
+                            <Phone className="text-gray-500 w-5 h-5" />
+                            Talk to our team
+                          </li>
+                        </Link>
+                      </ul>
+                    </button>
+                  </div>
+                </HoverCardContent>
+              </HoverCard>
+            ))}
+
             <HoverCard
               openDelay={200}
               closeDelay={100}
               onOpenChange={(open) => {
-                if (open) setHoveredMenu("feature");
-                else if (hoveredMenu === "feature") setHoveredMenu(null);
+                if (open) setHoveredMenu("resources");
+                else if (hoveredMenu === "resources") setHoveredMenu(null);
               }}
-              key={item.name}
             >
               <HoverCardTrigger className="text-gray-600 flex flex-row items-center gap-x-[6px] text-primary-greytext hover:text-primary-brandBlue cursor-pointer transition-colors">
-                <span className="text-black text-lg">Feature</span>
+                <span className="text-black text-lg">Resources</span>
                 <div className="relative w-4 h-4">
                   <ChevronDown
                     className={`w-4 h-4 absolute transition-all duration-300 ${
-                      hoveredMenu === "feature"
+                      hoveredMenu === "resources"
                         ? "opacity-0 transform rotate-180"
                         : "opacity-100"
                     }`}
                   />
                   <ChevronUp
                     className={`w-4 h-4 absolute transition-all duration-300 ${
-                      hoveredMenu === "feature"
+                      hoveredMenu === "resources"
                         ? "opacity-100 transform rotate-0"
                         : "opacity-0 transform -rotate-180"
                     }`}
@@ -222,235 +455,8 @@ export function FixedHeader() {
               </HoverCardTrigger>
 
               <HoverCardContent className="w-screen mr-[3px] bg-white flex flex-col gap-y-[31px] shadow-md mt-[16px] rounded-b-[30px] h-[500px]">
-                <div className="w-[85%] mx-auto flex flex-row gap-x-[56px] justify-between pt-[45px] pb-[72px] h-full">
-                  <div className="gap-y-[16px] flex flex-col w-1/3 h-full">
-                    <p className="text-[16px] text-primary-greytext pl-[16px]">
-                      By Product
-                    </p>
-                    {item.byProduct.map((product, productIndex) => (
-                      <Link
-                        href={product.link}
-                        key={productIndex}
-                        onClick={() => setHoveredMenu(null)}
-                      >
-                        <button className="flex flex-col gap-y-2 p-4 hover:bg-gray-50 hover:text-gray-700 text-gray-400 duration-100 transition-all ease-in-out cursor-pointer rounded-[14px]">
-                          <div className="flex items-center">
-                            {product.icon && (
-                              <div className="mr-2 h-4 mt-[-2px]">
-                                {product.icon}
-                              </div>
-                            )}
-                            <h2 className="text-[16px] font-medium text-gray-700">
-                              {product.header}
-                            </h2>
-                          </div>
-                          <p className="text-[14px] text-start">
-                            {product.description}
-                          </p>
-                        </button>
-                      </Link>
-                    ))}
-                  </div>
-                  <div className="gap-y-[16px] flex flex-col w-1/3 h-full">
-                    <p className="text-[16px] text-primary-greytext pl-[16px]">
-                      By Use Case
-                    </p>
-                    {item.byUseCase.map((useCase, useCaseIndex) => (
-                      <div
-                        key={useCaseIndex}
-                        className="flex flex-col gap-y-2 p-4 hover:bg-gray-50 hover:text-gray-700 text-gray-400 duration-100 transition-all ease-in-out cursor-pointer rounded-[14px]"
-                      >
-                        <div className="flex items-center">
-                          <h2 className="text-[16px] font-medium text-gray-700">
-                            {useCase.header}
-                          </h2>
-                        </div>
-                        <p className="text-[14px]">{useCase.description}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <button className="w-1/3 bg-gray-100 bg-opacity-70 cursor-default rounded-[24px] flex flex-col justify-center items-start gap-y-[24px] h-[240px] p-[32px]">
-                    <p className="text-[17px] text-primary-greytext">
-                      Useful links
-                    </p>
-                    <ul className="flex flex-col gap-y-[20px]">
-                      <Link href="https://beta.verzo.app/" target="_blank">
-                        <li className="flex flex-row gap-x-[14px] items-center cursor-pointer text-[16px] font-medium text-gray-700">
-                          <PlusCircle className="text-gray-500 w-5 h-5" />
-                          Sign up
-                        </li>
-                      </Link>
-                      <div>
-                        <Link target="_blank" href="https://blog.verzo.app/">
-                          <li className="flex flex-row gap-x-[14px] items-center text-[16px] font-medium text-gray-700">
-                            <Scroll className="text-gray-500 w-5 h-5" />
-                            Our Blog
-                          </li>
-                        </Link>
-                      </div>
-                      <Link href={`mailto:${emailAddress}`}>
-                        <li className="flex flex-row gap-x-[14px] items-center cursor-pointer text-[16px] font-medium text-gray-700">
-                          <Mail className="text-gray-500 w-5 h-5" />
-                          Send us a mail
-                        </li>
-                      </Link>
-                    </ul>
-                  </button>
-                </div>
-              </HoverCardContent>
-            </HoverCard>
-          ))}
-
-          <Link
-            href="/pricing"
-            className="text-black text-lg hover:text-gray-900"
-          >
-            Pricing
-          </Link>
-          {resources.map((item) => (
-            <HoverCard
-              openDelay={200}
-              closeDelay={100}
-              onOpenChange={(open) => {
-                if (open) setHoveredMenu("company");
-                else if (hoveredMenu === "company") setHoveredMenu(null);
-              }}
-              key={item.name}
-            >
-              <HoverCardTrigger className="text-gray-600 flex flex-row items-center gap-x-[6px] text-primary-greytext hover:text-primary-brandBlue cursor-pointer transition-colors">
-                <span className="text-black text-lg">Company</span>
-                <div className="relative w-4 h-4">
-                  <ChevronDown
-                    className={`w-4 h-4 absolute transition-all duration-300 ${
-                      hoveredMenu === "company"
-                        ? "opacity-0 transform rotate-180"
-                        : "opacity-100"
-                    }`}
-                  />
-                  <ChevronUp
-                    className={`w-4 h-4 absolute transition-all duration-300 ${
-                      hoveredMenu === "company"
-                        ? "opacity-100 transform rotate-0"
-                        : "opacity-0 transform -rotate-180"
-                    }`}
-                  />
-                </div>
-              </HoverCardTrigger>
-
-              <HoverCardContent className="w-screen mr-[3px] flex flex-col gap-y-[31px] bg-white shadow-md mt-[16px] rounded-b-[30px] h-[500px]">
-                <div className="w-[85%] mx-auto flex flex-row gap-x-[56px] justify-between pt-[45px] pb-[72px] h-full">
-                  <div className="gap-y-[16px] flex flex-col w-1/3 h-full">
-                    {item.byProduct.map((product, productIndex) => (
-                      <React.Fragment key={productIndex}>
-                        {product.link.includes("blog") ? (
-                          <a
-                            href={product.link}
-                            className="flex flex-col gap-y-2 p-4 hover:bg-gray-50 hover:text-gray-700 text-gray-700 rounded-[14px]"
-                          >
-                            <div className="flex items-center">
-                              <h2 className="text-[16px] font-medium">
-                                {product.header}
-                              </h2>
-                            </div>
-                            <p className="text-[14px] text-start">
-                              {product.description}
-                            </p>
-                          </a>
-                        ) : (
-                          <button
-                            className="flex flex-col gap-y-2 p-4 bg-gray-50 text-gray-500 cursor-not-allowed rounded-[14px]"
-                            disabled
-                          >
-                            <div className="flex items-center">
-                              <h2 className="text-[16px] font-medium">
-                                {product.header}
-                              </h2>
-                            </div>
-                            <p className="text-[14px] text-start">
-                              {product.description}
-                            </p>
-                          </button>
-                        )}
-                      </React.Fragment>
-                    ))}
-                  </div>
-                  <div className="gap-y-[16px] flex flex-col w-1/3 h-full">
-                    {item.byUseCase.map((useCase, useCaseIndex) => (
-                      <button
-                        key={useCaseIndex}
-                        className="flex flex-col gap-y-2 p-4 bg-gray-50 text-gray-500 cursor-not-allowed rounded-[14px]"
-                        disabled
-                      >
-                        <div className="flex items-center">
-                          <h2 className="text-[16px] font-medium text-gray-500">
-                            {useCase.header}
-                          </h2>
-                        </div>
-                        <p className="text-[14px]">{useCase.description}</p>
-                      </button>
-                    ))}
-                  </div>
-                  <button className="w-1/3 bg-gray-100 bg-opacity-70 cursor-default rounded-[24px] flex flex-col justify-center items-start gap-y-[24px] h-[240px] p-[32px]">
-                    <p className="text-[17px] text-primary-greytext">
-                      Useful links
-                    </p>
-                    <ul className="flex flex-col gap-y-[20px]">
-                      <Link href="/pricing">
-                        <li className="flex flex-row gap-x-[14px] items-center cursor-pointer text-[16px] font-medium text-gray-700">
-                          <ArrowUpDown className="text-gray-500 w-5 h-5" />
-                          Verzo Perks
-                        </li>
-                      </Link>
-                      <Link target="_blank" href="https://blog.verzo.app/">
-                        <li className="flex flex-row gap-x-[14px] items-center text-[16px] font-medium text-gray-700">
-                          <Scroll className="text-gray-500 w-5 h-5" />
-                          Our Blog
-                        </li>
-                      </Link>
-                      <Link href="tel:09066181506">
-                        <li className="flex flex-row gap-x-[14px] items-center cursor-pointer text-[16px] font-medium text-gray-700">
-                          <Phone className="text-gray-500 w-5 h-5" />
-                          Talk to our team
-                        </li>
-                      </Link>
-                    </ul>
-                  </button>
-                </div>
-              </HoverCardContent>
-            </HoverCard>
-          ))}
-
-          <HoverCard
-            openDelay={200}
-            closeDelay={100}
-            onOpenChange={(open) => {
-              if (open) setHoveredMenu("resources");
-              else if (hoveredMenu === "resources") setHoveredMenu(null);
-            }}
-          >
-            <HoverCardTrigger className="text-gray-600 flex flex-row items-center gap-x-[6px] text-primary-greytext hover:text-primary-brandBlue cursor-pointer transition-colors">
-              <span className="text-black text-lg">Resources</span>
-              <div className="relative w-4 h-4">
-                <ChevronDown
-                  className={`w-4 h-4 absolute transition-all duration-300 ${
-                    hoveredMenu === "resources"
-                      ? "opacity-0 transform rotate-180"
-                      : "opacity-100"
-                  }`}
-                />
-                <ChevronUp
-                  className={`w-4 h-4 absolute transition-all duration-300 ${
-                    hoveredMenu === "resources"
-                      ? "opacity-100 transform rotate-0"
-                      : "opacity-0 transform -rotate-180"
-                  }`}
-                />
-              </div>
-            </HoverCardTrigger>
-
-            <HoverCardContent className="w-screen mr-[3px] bg-white flex flex-col gap-y-[31px] shadow-md mt-[16px] rounded-b-[30px] h-[500px]">
-              <div className="p-6">
-                {/* {resourceItems.map((column, colIndex) => (
+                <div className="p-6">
+                  {/* {resourceItems.map((column, colIndex) => (
                   <div key={colIndex} className="space-y-4">
                     {column.map((item, itemIndex) => (
                       <div key={itemIndex}>
@@ -467,17 +473,32 @@ export function FixedHeader() {
                     ))}
                   </div>
                 ))} */}
-              </div>
-            </HoverCardContent>
-          </HoverCard>
-        </div>
-        <Button
-          variant="outline"
-          className="border-radius-sm bg-primary-brandBlue text-white py-5"
-        >
-          Start your free trial
-        </Button>
-      </nav>
-    </header>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+          </div>
+          <div className="md:hidden">
+            <button
+              type="button"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              onClick={() => setMobileMenuOpen(true)}
+              aria-expanded="false"
+            >
+              <span className="sr-only">Open main menu</span>
+              <Menu className="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
+          <div className="hidden md:block">
+            <Button
+              variant="outline"
+              className="border-radius-sm bg-primary-brandBlue text-white py-5"
+            >
+              Start your free trial
+            </Button>
+          </div>
+        </nav>
+      </header>
+      <Mobilemenu open={mobileMenuOpen} onClose={handleCloseMobileMenu} />
+    </>
   );
 }
