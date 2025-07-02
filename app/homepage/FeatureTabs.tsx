@@ -60,7 +60,7 @@ export function FeatureTabs() {
   return (
     <div className="w-full bg-primary-darkBlue py-20">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-white md:text-5xl font-medium text-center mb-12">
+        <h2 className="text-white text-2xl md:text-5xl font-medium text-center mb-12">
           Improved management at every growth stage
         </h2>
 
@@ -128,7 +128,7 @@ export function FeatureTabs() {
                 <p className="text-xl text-white/90 mb-8">{tab.description}</p>
                 <Button
                   variant="link"
-                  className="text-white flex items-center group p-0 text-xl h-auto font-normal hover:no-underline"
+                  className="text-white flex items-center group p-0 text-lg md:text-xl h-auto font-normal hover:no-underline"
                 >
                   Learn more
                   <ArrowRight className="ml-2 h-6 w-4 mt-1 transition-transform group-hover:translate-x-1" />

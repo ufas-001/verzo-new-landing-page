@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { NotificationBanner } from "@/components/notifcation-banner";
-import { LayoutSpacer } from "@/components/layout-sapcer";
 
 
 
@@ -19,7 +18,6 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NotificationBanner message="Get 70% off Verzo premium for the first 3 months" />
-        <LayoutSpacer />
         {children}
       </body>
     </html>

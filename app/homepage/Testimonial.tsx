@@ -83,10 +83,10 @@ export function Testimonials() {
               </div>
 
               <div className={`space-y-4 ${testimonial.textColor}`}>
-                <p className="text-base leading-relaxed">
+                <p className="text-sm md:text-base leading-relaxed">
                   {testimonial.quote.part1}
                 </p>
-                <p className="text-base leading-relaxed">
+                <p className="text-sm md:text-base leading-relaxed">
                   {testimonial.quote.part2}
                 </p>
               </div>
