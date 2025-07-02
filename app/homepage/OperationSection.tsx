@@ -177,7 +177,7 @@ const Operationsection = () => {
                   />
                 </div>
                 {/* Mobile image */}
-                <div className="max-h-[300px] mt-6 flex items-center justify-center md:hidden">
+                <div className="h-[300px] mt-6 flex items-center justify-center md:hidden">
                   <Image
                     className="object-fill mt-[-30px] md:mt-0"
                     alt={content2[currentIndex].header}
@@ -187,7 +187,7 @@ const Operationsection = () => {
                   />
                 </div>
                 {/* Tablet image */}
-                <div className="max-h-[300px] mt-6 items-center justify-center hidden md:flex lg:hidden">
+                <div className="h-[300px] mt-6 items-center justify-center hidden md:flex lg:hidden">
                   <Image
                     className="object-fill mt-[-30px] md:mt-0"
                     alt={content2[currentIndex].header}
