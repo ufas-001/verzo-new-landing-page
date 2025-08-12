@@ -53,7 +53,8 @@ export function Testimonials() {
     <section className="w-full bg-white pb-20">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="md:text-5xl font-medium text-center mb-16">
-          Verzo helps 17,000+ merchants manage their books
+          Helping merchants stay on top of their business finances clearly,
+          quickly, and confidently.
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -63,7 +64,9 @@ export function Testimonials() {
               className={`${testimonial.bgColor} rounded-[24px] p-8 relative`}
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className={`relative w-[60px] h-[60px] flex items-center justify-center rounded-full ${testimonial.logobgColor}`}>
+                <div
+                  className={`relative w-[60px] h-[60px] flex items-center justify-center rounded-full ${testimonial.logobgColor}`}
+                >
                   <Image
                     src={testimonial.avatar}
                     alt={testimonial.name}
