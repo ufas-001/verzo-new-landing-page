@@ -5,42 +5,35 @@ export function TrustedCompanies() {
     <div className="w-full bg-black py-12">
       <div className="max-w-7xl mx-auto px-4">
         <p className="text-white text-xl mb-8 text-center md:text-left">
-          Trusted by the best teams
+          Partners
         </p>
 
         {/* Desktop: flex wrap, Mobile: horizontal scroll */}
         <div className="hidden md:flex flex-wrap items-center justify-between gap-4">
           <Image
-            src="/godaddy.svg"
-            alt="GoDaddy"
+            src="/partner-1.png"
+            alt="partner 1"
             width={120}
             height={40}
             className="h-8 w-auto"
           />
           <Image
-            src="/stripe.svg"
-            alt="Stripe"
+            src="/partner-2.png"
+            alt="partner 2"
             width={120}
             height={40}
             className="h-8 w-auto"
           />
           <Image
-            src="/microsoft.svg"
-            alt="Microsoft"
+            src="/partner-3.png"
+            alt="partner 3"
             width={120}
             height={40}
             className="h-8 w-auto"
           />
           <Image
-            src="/airbnb.svg"
-            alt="Airbnb"
-            width={120}
-            height={40}
-            className="h-8 w-auto"
-          />
-          <Image
-            src="/asana.svg"
-            alt="Asana"
+            src="/partner-4.png"
+            alt="partner 4"
             width={120}
             height={40}
             className="h-8 w-auto"

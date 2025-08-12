@@ -13,10 +13,10 @@ export function CallToAction() {
             <div className="space-y-4">
               <div className="space-y-1">
                 <h2 className="text-3xl font-medium tracking-tight">
-                  Button up your business
+                  Start managing and growing
                 </h2>
                 <p className="text-3xl font-medium tracking-tight">
-                  with professional invoices.
+                  Your business with Verzo today
                 </p>
               </div>
               <Link

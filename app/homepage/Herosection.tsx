@@ -4,28 +4,35 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
-const src = "https://verzo.fra1.cdn.digitaloceanspaces.com/Hero.png";
+// const src = "https://verzo.fra1.cdn.digitaloceanspaces.com/Hero.png";
 
 const slides = [
   {
-    title: "Invoicing Simplified",
+    title: "Manage Your Finances with Clarity",
     description:
-      "Create professional invoices, accept online payments, and track payments effortlessly.",
-    image: src,
+      "Verzo brings everything you need to manage your business finances into one place. No stress, no scattered tools.",
+    image: "/hero-1.png",
     cta: "Get 30 days free",
   },
   {
-    title: "Expense Tracking Made Easy",
+    title: "Grow Your Sales with Clear Invoicing",
     description:
-      "Effortlessly manage your expenses and gain a clear view of your financial health.",
-    image: src,
+      "Verzo simplifies invoicing to help your sales thrive. Easily create invoices, send to customers, manage payments, and provide receipts, all in one streamlined system.",
+    image: "/hero-2.png",
     cta: "Get 30 days free",
   },
   {
-    title: "Efficient Purchase Management",
+    title: "Track what you spend to stay in control",
     description:
-      "Centralize supplier information and streamline your procurement process.",
-    image: src,
+      "From buying products and supplies to covering everyday costs, record every expense and always know where your money goes.",
+    image: "/hero-3.png",
+    cta: "Get 30 days free",
+  },
+  {
+    title: "Where Your Business Finances Come Together",
+    description:
+      "From incoming revenue to outgoing expenses or staff payments, Verzo ensures your financial records stay clear and manageable.",
+    image: "/hero-4.png",
     cta: "Get 30 days free",
   },
 ];
@@ -42,9 +49,9 @@ export function HeroCarousel() {
   }, []);
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-r from-white to-blue-50 pt-16 md:pt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative min-h-[500px] sm:min-h-[600px] md:h-[700px]">
+    <div className="relative overflow-hidden bg-gradient-to-r from-white to-blue-50 pt-16 md:pt-28">
+      <div className="max-w-7xl mx-auto sm:px-4">
+        <div className="relative min-h-[500px] sm:min-h-[600px] md:h-[500px]">
           {slides.map((slide, index) => (
             <div
               key={index}
@@ -56,9 +63,9 @@ export function HeroCarousel() {
             >
               <div className="flex flex-col md:flex-row h-full items-center">
                 {/* Content section */}
-                <div className="w-full md:w-1/2 flex justify-start">
-                  <div className="max-w-lg md:max-w-xl lg:max-w-2xl space-y-4 md:space-y-6 text-left px-4 md:px-0">
-                    <div className="space-y-3 md:space-y-4">
+                <div className="w-full md:w-1/2 flex justify-start h">
+                  <div className="max-w-lg md:max-w-xl lg:max-w-lg space-y-4 md:space-y-6 text-left px-4 md:px-0">
+                    <div className="space-y-3 md:space-y-4 h-[250px]">
                       <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-primary-black leading-tight md:leading-[59px]">
                         {slide.title}
                       </h1>
@@ -76,13 +83,13 @@ export function HeroCarousel() {
                 </div>
 
                 {/* Image section */}
-                <div className="w-full md:w-1/2 mt-6 md:mt-0 flex justify-center md:justify-end">
-                  <div className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl">
+                <div className="w-full md:w-1/2 mt-6 md:mt-0">
+                  <div className="relative  flex justify-end">
                     <Image
-                      className="w-full h-auto"
+                      className="object-fit"
                       alt={`${slide.title} illustration`}
-                      width={600}
-                      height={600}
+                      width={450}
+                      height={700}
                       src={slide.image || "/placeholder.svg"}
                       priority={index === 0}
                     />

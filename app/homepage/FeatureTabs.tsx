@@ -9,34 +9,34 @@ const tabs = [
   {
     id: "invoice",
     label: "Invoice",
-    title: "Send invoices and get rewarded",
+    title: "Looking to keep sales on track?",
     description:
-      "Create professional invoices, accept online payments, track delayed payment and get Verzo points when they're paid.",
-    image: "/invoice.svg",
+      "It starts with better invoicing. Create it, send it, mark it paid and your sales update automatically.",
+    image: "/invoice.png",
   },
   {
     id: "expense",
     label: "Expense",
-    title: "Track expenses effortlessly",
+    title: "Tired of losing track of business spending?",
     description:
-      "Capture receipts on the go, categorize expenses automatically, and generate detailed reports for better financial insights.",
-    image: "/invoice.svg",
+      "Log your expenses and purchases, link payments, and see exactly where your money goes. No more digging through receipts.",
+    image: "/expense.png",
   },
   {
     id: "purchase",
-    label: "Purchase",
-    title: "Streamline your purchases",
+    label: "Payroll",
+    title: "Need a stress-free way to pay your staff?",
     description:
-      "Manage purchase orders, track deliveries, and maintain vendor relationships all in one place.",
-    image: "/invoice.svg",
+      "Automate payment schedules, calculate salaries accurately, and pay your team on time. No manual work required.",
+    image: "/payroll.png",
   },
   {
     id: "cards",
     label: "Cards",
-    title: "Smart corporate cards",
+    title: "Need a faster way to pay for business expenses?",
     description:
-      "Issue virtual and physical cards to your team with custom spending limits and real-time expense tracking.",
-    image: "/invoice.svg",
+      "With Verzo’s virtual cards, control spending, and track every transaction in one place no paperwork or bank queues.",
+    image: "/cards.png",
   },
 ];
 
@@ -124,8 +124,12 @@ export function FeatureTabs() {
                   }
                 `}
               >
-                <h3 className="md:text-3xl font-medium mb-4">{tab.title}</h3>
-                <p className="text-xl text-white/90 mb-8">{tab.description}</p>
+                <div className="h-[250px]">
+                  <h3 className="md:text-3xl font-medium mb-4">{tab.title}</h3>
+                  <p className="text-xl text-white/90 mb-8">
+                    {tab.description}
+                  </p>
+                </div>
                 <Button
                   variant="link"
                   className="text-white flex items-center group p-0 text-lg md:text-xl h-auto font-normal hover:no-underline"

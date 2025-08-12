@@ -36,7 +36,8 @@ export default {
   				pink: '#FDEAEA',
   				lightGreen: '#D8F0D6',
   				boldBlue: '#004FA4',
-  				deepBlue: '#1E35CF'
+  				deepBlue: '#1E35CF',
+				faintGray: "#F4F6FA",
   			},
   			secondary: {
   				DEFAULT: 'hsl(var(--secondary))',

@@ -11,43 +11,43 @@ const Operationsection = () => {
   const content2 = [
     {
       number: 1,
-      header: "Invoicing Simplified",
+      header: "Invoicing That Drives Sales Success",
       description:
-        "Create professional invoices, accept online payments, and track payment status effortlessly",
+        "Create and send professional invoices, accept payments online, and automatically track each sale from invoice to completion.",
       icon1: "icon1-url", // Replace with the URL or source for your icon
       icon2: "icon2-url", // Replace with the URL or source for your icon
       icon3: "icon3-url", // Replace with the URL or source for your icon
-      image: "https://verzo.fra1.cdn.digitaloceanspaces.com/Originalcopy.png", // Replace with actual image URL for invoicing
+      image: "/tools-1.png", // Replace with actual image URL for invoicing
     },
     {
       number: 2,
-      header: "Expense tracking made easy",
+      header: "Track Smarter. Spend Better",
       description:
-        "Effortlessly manage your expenses and gain a clear view of your financial health",
+        "Total visibility into your spending. Track expenses and purchases in real-time, all from one clean dashboard.",
       icon1: "icon1-url", // Replace with the URL or source for your icon
       icon2: "icon2-url", // Replace with the URL or source for your icon
       icon3: "icon3-url", // Replace with the URL or source for your icon
-      image: "https://verzo.fra1.cdn.digitaloceanspaces.com/Hero.png", // Replace with actual image URL for expense tracking
+      image: "/tools-2.png", // Replace with actual image URL for expense tracking
     },
     {
       number: 3,
-      header: "Efficient purchasing management",
+      header: "Customer and Supplier Management",
       description:
-        "Centralize supplier information and streamline your procurement process",
+        "Create organized profiles that help you track, engage, and grow strong relationships with your customers and Suppliers.",
       icon1: "icon1-url", // Replace with the URL or source for your icon
       icon2: "icon2-url", // Replace with the URL or source for your icon
       icon3: "icon3-url", // Replace with the URL or source for your icon
-      image: "https://verzo.fra1.cdn.digitaloceanspaces.com/Originalcopy.png", // Replace with actual image URL for purchasing
+      image: "/tools-3.png", // Replace with actual image URL for purchasing
     },
     {
       number: 4,
-      header: "Customer and vendor management",
+      header: "Pay your staff in a few clicks",
       description:
-        "Create and organize profiles swiftly for personalized and efficient engagement",
+        "Set your payment schedule, calculate salaries, and pay your team — no manual work needed.",
       icon1: "icon1-url", // Replace with the URL or source for your icon
       icon2: "icon2-url", // Replace with the URL or source for your icon
       icon3: "icon3-url", // Replace with the URL or source for your icon
-      image: "https://verzo.fra1.cdn.digitaloceanspaces.com/Hero.png", // Replace with actual image URL for customer/vendor management
+      image: "/tools-4.png", // Replace with actual image URL for customer/vendor management
     },
   ];
 
@@ -65,7 +65,7 @@ const Operationsection = () => {
     <div className="w-full bg-primary-background pt-[80px] md:pb-[50px] pb-[20px]">
       <div className="flex flex-col lg:gap-y-[30px] items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="md:leading-[59px] md:text-5xl  leading-10 text-center font-medium tracking-tight text-primary-black lg:max-w-full max-w-[750px] min-w-[300px]">
-          Streamline your business with our tools
+          Improve your business with our tools
         </div>
         <div className="w-full">
           <div className="w-full flex flex-col lg:flex-row lg:gap-x-14">
@@ -165,14 +165,14 @@ const Operationsection = () => {
               </div>
             </div>
             <div className="w-full lg:w-1/2 relative flex items-center">
-              <div className="relative lg:ml-auto w-full mx-auto">
+              <div className="relative lg:ml-auto w-full mx-auto ">
                 {/* Desktop image */}
-                <div className="hidden items-center justify-center lg:block">
+                <div className="hidden mx-auto lg:block ">
                   <Image
-                    className="object-fill mt-[-30px] md:mt-0"
+                    className="object-fill mt-[-30px] md:mt-0 bg-primary-faintGray p-5 border border-primary-faintGray rounded-[10px]"
                     alt={content2[currentIndex].header}
-                    width={900}
-                    height={500}
+                    width={400}
+                    height={400}
                     src={content2[currentIndex].image}
                   />
                 </div>
@@ -187,12 +187,12 @@ const Operationsection = () => {
                   />
                 </div>
                 {/* Tablet image */}
-                <div className="h-[300px] mt-6 items-center justify-center hidden md:flex lg:hidden">
+                <div className="h-[300px] mt-6 items-center justify-center hidden md:flex lg:hidden ">
                   <Image
                     className="object-fill mt-[-30px] md:mt-0"
                     alt={content2[currentIndex].header}
-                    width={500}
-                    height={400}
+                    width={300}
+                    height={300}
                     src={content2[currentIndex].image}
                   />
                 </div>
