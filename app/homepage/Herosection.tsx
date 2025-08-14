@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+// import Image from "next/image";
+import Hero1 from "@/public/hero-1";
+import Hero2 from "@/public/hero-2";
 
 // const src = "https://verzo.fra1.cdn.digitaloceanspaces.com/Hero.png";
 
@@ -13,6 +15,7 @@ const slides = [
       "Verzo brings everything you need to manage your business finances into one place. No stress, no scattered tools.",
     image: "/hero-1.png",
     cta: "Get 30 days free",
+    icon: Hero1,
   },
   {
     title: "Grow Your Sales with Clear Invoicing",
@@ -20,6 +23,7 @@ const slides = [
       "Verzo simplifies invoicing to help your sales thrive. Easily create invoices, send to customers, manage payments, and provide receipts, all in one streamlined system.",
     image: "/hero-2.png",
     cta: "Get 30 days free",
+    icon: Hero2,
   },
   {
     title: "Track what you spend to stay in control",
@@ -27,6 +31,7 @@ const slides = [
       "From buying products and supplies to covering everyday costs, record every expense and always know where your money goes.",
     image: "/hero-3.png",
     cta: "Get 30 days free",
+    icon: Hero1,
   },
   {
     title: "Where Your Business Finances Come Together",
@@ -34,6 +39,7 @@ const slides = [
       "From incoming revenue to outgoing expenses or staff payments, Verzo ensures your financial records stay clear and manageable.",
     image: "/hero-4.png",
     cta: "Get 30 days free",
+    icon: Hero2,
   },
 ];
 
@@ -85,14 +91,15 @@ export function HeroCarousel() {
                 {/* Image section */}
                 <div className="w-full md:w-1/2 mt-6 md:mt-0">
                   <div className="relative  flex justify-end">
-                    <Image
+                    {/* <Image
                       className="object-fit"
                       alt={`${slide.title} illustration`}
                       width={450}
                       height={700}
                       src={slide.image || "/placeholder.svg"}
                       priority={index === 0}
-                    />
+                    /> */}
+                    <slide.icon />
                   </div>
                 </div>
               </div>

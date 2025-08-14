@@ -8,6 +8,7 @@ import { ArrowUpDown, ChevronDown, ChevronUp, Mail, Menu, Phone, PlusCircle, Scr
 import { Button } from "./ui/button";
 import React from "react";
 import Mobilemenu from "./MobileMenu";
+import { usePathname, useRouter } from "next/navigation";
 
 
 
@@ -171,6 +172,20 @@ export function FixedHeader() {
      setMobileMenuOpen(false);
    };
 
+   const router = useRouter();
+   const pathname = usePathname();
+
+   const handleNavClick = (link: string) => {
+     setHoveredMenu(null);
+     // Force navigation even if on same page
+     if (pathname === link) {
+       router.push(link);
+       router.refresh(); // Force a refresh if on same page
+     }
+   };
+
+
+
   useEffect(() => {
     const handleNotificationClose = () => {
       setNotificationVisible(false);
@@ -237,7 +252,7 @@ export function FixedHeader() {
                         <Link
                           href={product.link}
                           key={productIndex}
-                          onClick={() => setHoveredMenu(null)}
+                          onClick={() => handleNavClick(product.link)}
                         >
                           <button className="flex flex-col gap-y-2 p-4 hover:bg-gray-50 hover:text-gray-700 text-gray-400 duration-100 transition-all ease-in-out cursor-pointer rounded-[14px]">
                             <div className="flex items-center">
@@ -312,6 +327,9 @@ export function FixedHeader() {
               className="text-black text-lg hover:text-gray-900"
             >
               Pricing
+            </Link>
+            <Link href="/" className="text-black text-lg hover:text-gray-900">
+              About
             </Link>
             {resources.map((item) => (
               <HoverCard
