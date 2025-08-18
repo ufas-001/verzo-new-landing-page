@@ -5,32 +5,36 @@ import { Button } from "@/components/ui/button";
 
 export function CallToAction() {
   return (
-    <div className="max-w-5xl mx-auto px-4 py-20">
-      <div className="">
+    <div className="max-w-7xl mx-auto px-4 bg-primary-darkBlue">
+      <div className="max-w-5xl mx-auto px-4 py-20">
         <div className="">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            <div className="space-y-4">
-              <div className="space-y-1">
-                <h2 className="text-3xl font-medium tracking-tight">
-                  Button up your business
-                </h2>
-                <p className="text-3xl font-medium tracking-tight">
-                  with professional invoices.
-                </p>
+          <div className="">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+              <div className="space-y-4">
+                <div className="space-y-1">
+                  <h2 className="text-3xl font-medium tracking-tight text-white">
+                    Button up your business
+                  </h2>
+                  <p className="text-3xl font-medium tracking-tight text-white">
+                    with professional invoices.
+                  </p>
+                </div>
+                <Link
+                  href="#"
+                  className="inline-flex items-center text-foreground hover:underline text-white"
+                >
+                  Explore all plans <ArrowRight className="ml-1 h-4 w-4" />
+                </Link>
               </div>
-              <Link
-                href="#"
-                className="inline-flex items-center text-foreground hover:underline"
+              <Button
+                size="lg"
+                className=" bg-primary-lightWhite hover:bg-blue-600 hover:text-white text-primary-darkBlue px-8 rounded-[10px]"
               >
-                Explore all plans <ArrowRight className="ml-1 h-4 w-4" />
-              </Link>
+                <Link href="#" className="">
+                  Get 30 days free
+                </Link>
+              </Button>
             </div>
-            <Button
-              size="lg"
-              className=" bg-primary-brandBlue hover:bg-blue-600 text-white px-8 rounded-[10px]"
-            >
-              <Link href="#">Get 30 days free</Link>
-            </Button>
           </div>
         </div>
       </div>

@@ -1,14 +1,15 @@
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+// import Image from "next/image";
+import InvoiceHero from "@/public/invoiceHero"; // Importing the invoice hero image
 
-const src = "https://verzo.fra1.cdn.digitaloceanspaces.com/Hero.png";
+// const src = "https://verzo.fra1.cdn.digitaloceanspaces.com/Hero.png";
 const slides = [
   {
     header: "Invoice",
-    title: "Create Stunning Invoices in Seconds",
+    title: "From Invoice to Income.",
     description:
-      "Say goodbye to manual invoicing! With Verzo, crafting professional invoices is a breeze.",
-    image: src, // Image in public directory
+      "Create clean, professional invoices that instantly reflect in your sales once payment is recorded.",
+    image: InvoiceHero, // Image in public directory
     cta: "Get 30 days free",
   },
 ];
@@ -69,7 +70,7 @@ const HeroSection = () => {
                       </span>
                       {slide.header}
                     </div>
-                    <div className="space-y-3 md:space-y-4">
+                    <div className="space-y-3 md:space-y-4 h-[200px]">
                       <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-primary-black leading-tight md:leading-[59px]">
                         {slide.title}
                       </h1>
@@ -87,16 +88,9 @@ const HeroSection = () => {
                 </div>
 
                 {/* Image section */}
-                <div className="w-full md:w-1/2 mt-6 md:mt-0 flex justify-center md:justify-end">
-                  <div className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl">
-                    <Image
-                      className="w-full h-auto"
-                      alt={`${slide.title} illustration`}
-                      width={600}
-                      height={600}
-                      src={slide.image || "/placeholder.svg"}
-                      priority={index === 0}
-                    />
+                <div className="w-full md:w-1/2 mt-6 md:mt-0">
+                  <div className="relative flex justify-end">
+                    <slide.image />
                   </div>
                 </div>
               </div>

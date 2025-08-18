@@ -3,31 +3,30 @@ import React from "react";
 const CheckIcon2 = () => {
   return (
     <svg
-      width="18"
+      width="19"
       height="14"
-      viewBox="0 0 18 14"
+      viewBox="0 0 19 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M16.1998 1.59961L5.46053 12.3996L1.7998 8.71819"
-        stroke="url(#paint0_linear_11418_10080)"
+        d="M16.6988 1.60156L5.95956 12.4016L2.29883 8.72014"
+        stroke="url(#paint0_linear_14407_14911)"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <defs>
         <linearGradient
-          id="paint0_linear_11418_10080"
-          x1="1.7998"
-          y1="1.78222"
-          x2="17.7571"
-          y2="8.59585"
+          id="paint0_linear_14407_14911"
+          x1="2.29883"
+          y1="7.00156"
+          x2="16.6988"
+          y2="7.00156"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#6D51A5" />
-          <stop offset="0.479718" stopColor="#4B1D6C" stopOpacity="0.77" />
-          <stop offset="1" stopColor="#E4A7C5" />
+          <stop stopColor="#027DFF" />
+          <stop offset="1" stopColor="#090DE9" stopOpacity="0.9" />
         </linearGradient>
       </defs>
     </svg>

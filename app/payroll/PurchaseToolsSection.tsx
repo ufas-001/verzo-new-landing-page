@@ -1,13 +1,14 @@
 import CheckIcon2 from "../components/CheckIcon2";
-import ExpenseTool1 from "@/public/expenseTool1";
-import ExpenseTool2 from "@/public/expenseTool2";
-import ExpenseTool3 from "@/public/expenseTool3";
-// // Define the type for the feature
+import PayrollTool1 from "@/public/payrollTool1";
+import PayrollTool2 from "@/public/payrollTool2";
+import PayrollTool3 from "@/public/payrollTool3";
+// Define the type for the feature
 // type Feature = {
 //   title: string;
 //   description: string;
-//   image: string;
+//   image: string
 // };
+
 
 // const features: Feature[] = [
 //   {
@@ -30,13 +31,13 @@ import ExpenseTool3 from "@/public/expenseTool3";
 //   },
 // ];
 
-const ExpenseFeatures = () => {
+const PurchaseFeatures = () => {
   return (
     <section className="w-full py-12 md:py-20 bg-primary-faintBlue">
       <div className="max-w-7xl mx-auto px-4">
         {/* Main heading */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-center mb-8 md:mb-12 leading-tight">
-          Start With The Best Expense Tool
+          Start With The Best Payroll Tool
         </h2>
 
         {/* Feature highlights */}
@@ -60,42 +61,43 @@ const ExpenseFeatures = () => {
         <div className="">
           <div className="flex row w-full items-center justify-between">
             <div className="w-1/2">
-              <ExpenseTool1 />
+              <PayrollTool1 />
             </div>
             <div className="w-1/2 ">
-              <h1 className="text-[36px]">Keep Track of What Goes Out</h1>
+              <h1 className="text-[36px]">Payroll That Runs Itself</h1>
               <p className="text-lg text-primary-lightGray pt-3">
-                Record expenses and purchases as they happen, keep your vendor
-                details in one place, and maintain clear and organized records.
+                Set pay dates and rules once, and every cycle takes care of
+                itself salaries calculated, payments sent, and records updated
+                without the busywork.
               </p>
             </div>
           </div>
 
           <div className="flex row w-full items-center justify-between">
             <div className="w-1/2">
-              <h1 className="text-[36px]">Pay Vendors Without the Confusion</h1>
+              <h1 className="text-[36px]">
+                Error-Free Payroll, All in One Place
+              </h1>
               <p className="text-lg text-primary-lightGray pt-3">
-                Send payments now or later, tag each expense, and store vendor
-                details and receipts so every expense is easy to trace and
-                audit-ready.
+                Keep staff details, payment rules, and pay history neatly
+                organized. Verzo calculates and pays with precision, ensuring
+                every cycle is smooth and accurate.
               </p>
             </div>
             <div className="w-1/2 flex justify-end">
-              <ExpenseTool2 />
+              <PayrollTool2 />
             </div>
           </div>
           <div className="flex row w-full items-center justify-between">
             <div className="w-1/2">
-              <ExpenseTool3 />
+              <PayrollTool3 />
             </div>
             <div className="w-1/2 ">
-              <h1 className="text-[36px]">
-                Turn Spending Into Clear Business Insights
-              </h1>
+              <h1 className="text-[36px]">Know What’s Happening at a Glance</h1>
               <p className="text-lg text-primary-lightGray pt-3">
-                From daily expenses to large purchases, Verzo organizes your
-                payment history, vendor data, and receipts to reveal patterns
-                that support better decisions.
+                See upcoming pay runs, track past payments, and monitor your
+                payroll cycles from a single, clear dashboard no paperwork or
+                guesswork.
               </p>
             </div>
           </div>
@@ -105,4 +107,4 @@ const ExpenseFeatures = () => {
   );
 };
 
-export default ExpenseFeatures;
+export default PurchaseFeatures;

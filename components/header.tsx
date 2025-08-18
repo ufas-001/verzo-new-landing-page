@@ -80,9 +80,9 @@ const features = [
             </defs>
           </svg>
         ),
-        header: "Manage Purchase Orders",
-        description: "Create and send your puchase orders to a merchant ",
-        link: "/purchase",
+        header: "Manage your payroll",
+        description: "Pay your team without stress",
+        link: "/payroll",
       },
       {
         icon: (

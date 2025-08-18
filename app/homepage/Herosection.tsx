@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 // import Image from "next/image";
 import Hero1 from "@/public/hero-1";
 import Hero2 from "@/public/hero-2";
+import Hero3 from "@/public/hero-3";
 
 // const src = "https://verzo.fra1.cdn.digitaloceanspaces.com/Hero.png";
 
@@ -31,16 +32,16 @@ const slides = [
       "From buying products and supplies to covering everyday costs, record every expense and always know where your money goes.",
     image: "/hero-3.png",
     cta: "Get 30 days free",
-    icon: Hero1,
+    icon: Hero3,
   },
-  {
-    title: "Where Your Business Finances Come Together",
-    description:
-      "From incoming revenue to outgoing expenses or staff payments, Verzo ensures your financial records stay clear and manageable.",
-    image: "/hero-4.png",
-    cta: "Get 30 days free",
-    icon: Hero2,
-  },
+  // {
+  //   title: "Where Your Business Finances Come Together",
+  //   description:
+  //     "From incoming revenue to outgoing expenses or staff payments, Verzo ensures your financial records stay clear and manageable.",
+  //   image: "/hero-4.png",
+  //   cta: "Get 30 days free",
+  //   icon: Hero2,
+  // },
 ];
 
 export function HeroCarousel() {

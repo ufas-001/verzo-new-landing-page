@@ -42,13 +42,12 @@ const VirtualCardSection = () => {
             Why It Matters
           </h2>
           <p className="text-lg text-primary-lightGray2 text-center">
-            Businesses often struggle with missing receipts, messy records, and
-            the stress of tracking expenses across different apps. When
-            everything isn’t in one place, important details get lost and it’s
-            hard to see where your money is going. This can lead to bad choices,
-            audit problems, and wasted time. Verzo puts all your expense
-            tracking in one place so it’s easier to stay organized, make better
-            decisions, and keep your finances clean.
+            Manual payroll can lead to late pay, mistakes, and unhappy
+            employees. When salaries aren’t sent on time or have errors, it
+            becomes hard for staff to trust the process, and team morale starts
+            to drop. Verzo automates payroll so payments are accurate, on time,
+            and effortless helping your business build trust and keep teams
+            motivated.
           </p>
         </div>
       </div>

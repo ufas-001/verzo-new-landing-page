@@ -13,10 +13,10 @@ export function CallToAction() {
               <div className="space-y-4">
                 <div className="space-y-1">
                   <h2 className="text-3xl font-medium tracking-tight text-white">
-                    Stay on Top of Costs
+                    Keep Salary Payments
                   </h2>
                   <p className="text-3xl font-medium tracking-tight text-white">
-                    with Smart Expense Tracking
+                    Smooth and Stress-Free.
                   </p>
                 </div>
                 <Link

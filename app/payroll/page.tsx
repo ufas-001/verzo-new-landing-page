@@ -7,7 +7,7 @@ import FeaturedTestimonial from "./Testimonial";
 import VirtualCardSection from "./VirtualCardSection";
 import { FixedHeader } from "@/components/header";
 
-const Purchase = () => {
+const Payroll = () => {
   return (
     <div>
       <FixedHeader />
@@ -22,4 +22,4 @@ const Purchase = () => {
   );
 };
 
-export default Purchase;
+export default Payroll;
