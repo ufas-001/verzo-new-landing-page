@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import Hero1 from "@/public/hero-1";
 import Hero2 from "@/public/hero-2";
 import Hero3 from "@/public/hero-3";
+import Hero4 from "@/public/hero-4";
 
 // const src = "https://verzo.fra1.cdn.digitaloceanspaces.com/Hero.png";
 
@@ -34,14 +35,14 @@ const slides = [
     cta: "Get 30 days free",
     icon: Hero3,
   },
-  // {
-  //   title: "Where Your Business Finances Come Together",
-  //   description:
-  //     "From incoming revenue to outgoing expenses or staff payments, Verzo ensures your financial records stay clear and manageable.",
-  //   image: "/hero-4.png",
-  //   cta: "Get 30 days free",
-  //   icon: Hero2,
-  // },
+  {
+    title: "Where Your Business Finances Come Together",
+    description:
+      "From incoming revenue to outgoing expenses or staff payments, Verzo ensures your financial records stay clear and manageable.",
+    image: "/hero-4.png",
+    cta: "Get 30 days free",
+    icon: Hero4,
+  },
 ];
 
 export function HeroCarousel() {
@@ -91,7 +92,7 @@ export function HeroCarousel() {
 
                 {/* Image section */}
                 <div className="w-full md:w-1/2 mt-6 md:mt-0">
-                  <div className="relative  flex justify-end">
+                  <div className="relative w-full  flex justify-end">
                     {/* <Image
                       className="object-fit"
                       alt={`${slide.title} illustration`}
@@ -101,6 +102,7 @@ export function HeroCarousel() {
                       priority={index === 0}
                     /> */}
                     <slide.icon />
+                    
                   </div>
                 </div>
               </div>

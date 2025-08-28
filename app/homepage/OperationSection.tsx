@@ -1,6 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
+import Tools1 from "@/public/tools-1";
+import Tools2 from "@/public/tools-2";
+import Tools3 from "@/public/tools-3";
+import Tools4 from "@/public/tools-4";
 
 const colors = ["bg-red-500", "bg-blue-500", "bg-green-500", "bg-blue-200"];
 const intervalDuration = 3000; // 3 seconds
@@ -14,40 +17,28 @@ const Operationsection = () => {
       header: "Invoicing That Drives Sales Success",
       description:
         "Create and send professional invoices, accept payments online, and automatically track each sale from invoice to completion.",
-      icon1: "icon1-url", // Replace with the URL or source for your icon
-      icon2: "icon2-url", // Replace with the URL or source for your icon
-      icon3: "icon3-url", // Replace with the URL or source for your icon
-      image: "/tools-1.png", // Replace with actual image URL for invoicing
+      IconComponent: Tools1,
     },
     {
       number: 2,
       header: "Track Smarter. Spend Better",
       description:
         "Total visibility into your spending. Track expenses and purchases in real-time, all from one clean dashboard.",
-      icon1: "icon1-url", // Replace with the URL or source for your icon
-      icon2: "icon2-url", // Replace with the URL or source for your icon
-      icon3: "icon3-url", // Replace with the URL or source for your icon
-      image: "/tools-2.png", // Replace with actual image URL for expense tracking
+      IconComponent: Tools2, // Replace with actual image URL for expense tracking
     },
     {
       number: 3,
       header: "Customer and Supplier Management",
       description:
         "Create organized profiles that help you track, engage, and grow strong relationships with your customers and Suppliers.",
-      icon1: "icon1-url", // Replace with the URL or source for your icon
-      icon2: "icon2-url", // Replace with the URL or source for your icon
-      icon3: "icon3-url", // Replace with the URL or source for your icon
-      image: "/tools-3.png", // Replace with actual image URL for purchasing
+      IconComponent: Tools3, // Replace with actual image URL for purchasing
     },
     {
       number: 4,
       header: "Pay your staff in a few clicks",
       description:
         "Set your payment schedule, calculate salaries, and pay your team — no manual work needed.",
-      icon1: "icon1-url", // Replace with the URL or source for your icon
-      icon2: "icon2-url", // Replace with the URL or source for your icon
-      icon3: "icon3-url", // Replace with the URL or source for your icon
-      image: "/tools-4.png", // Replace with actual image URL for customer/vendor management
+      IconComponent: Tools4, // Replace with actual image URL for customer/vendor management
     },
   ];
 
@@ -168,33 +159,15 @@ const Operationsection = () => {
               <div className="relative lg:ml-auto w-full mx-auto ">
                 {/* Desktop image */}
                 <div className="hidden mx-auto lg:block ">
-                  <Image
-                    className="object-fill mt-[-30px] md:mt-0 bg-primary-faintGray p-5 border border-primary-faintGray rounded-[10px]"
-                    alt={content2[currentIndex].header}
-                    width={400}
-                    height={400}
-                    src={content2[currentIndex].image}
-                  />
+                  {React.createElement(content2[currentIndex].IconComponent)}
                 </div>
                 {/* Mobile image */}
                 <div className="h-[300px] mt-6 flex items-center justify-center md:hidden">
-                  <Image
-                    className="object-fill mt-[-30px] md:mt-0"
-                    alt={content2[currentIndex].header}
-                    width={350}
-                    height={300}
-                    src={content2[currentIndex].image}
-                  />
+                  {React.createElement(content2[currentIndex].IconComponent)}
                 </div>
                 {/* Tablet image */}
                 <div className="h-[300px] mt-6 items-center justify-center hidden md:flex lg:hidden ">
-                  <Image
-                    className="object-fill mt-[-30px] md:mt-0"
-                    alt={content2[currentIndex].header}
-                    width={300}
-                    height={300}
-                    src={content2[currentIndex].image}
-                  />
+                  {React.createElement(content2[currentIndex].IconComponent)}
                 </div>
               </div>
             </div>

@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import ManagementTool1 from "@/public/management-tool-1";
+import ManagementTool2 from "@/public/management-tool-2";
 
 const tabs = [
   {
@@ -12,7 +13,7 @@ const tabs = [
     title: "Looking to keep sales on track?",
     description:
       "It starts with better invoicing. Create it, send it, mark it paid and your sales update automatically.",
-    image: "/invoice.png",
+    icon: ManagementTool1,
   },
   {
     id: "expense",
@@ -20,7 +21,7 @@ const tabs = [
     title: "Tired of losing track of business spending?",
     description:
       "Log your expenses and purchases, link payments, and see exactly where your money goes. No more digging through receipts.",
-    image: "/expense.png",
+    icon: ManagementTool2,
   },
   {
     id: "purchase",
@@ -28,15 +29,15 @@ const tabs = [
     title: "Need a stress-free way to pay your staff?",
     description:
       "Automate payment schedules, calculate salaries accurately, and pay your team on time. No manual work required.",
-    image: "/payroll.png",
+    icon: ManagementTool2,
   },
   {
     id: "cards",
     label: "Cards",
     title: "Need a faster way to pay for business expenses?",
     description:
-      "With Verzo’s virtual cards, control spending, and track every transaction in one place no paperwork or bank queues.",
-    image: "/cards.png",
+      "With Verzo's virtual cards, control spending, and track every transaction in one place no paperwork or bank queues.",
+    icon: ManagementTool2,
   },
 ];
 
@@ -55,7 +56,6 @@ export function FeatureTabs() {
     return () => clearInterval(interval);
   }, []);
 
-//   const activeTabContent = tabs.find((tab) => tab.id === activeTab);
 
   return (
     <div className="w-full bg-primary-darkBlue py-20">
@@ -74,8 +74,8 @@ export function FeatureTabs() {
                 rounded-full px-6 py-2 text-sm font-medium transition-colors
                 ${
                   activeTab === tab.id
-                    ? "bg-primary-brandBlue text-white hover:bg-blue-500"
-                    : "bg-primary-blue text-white/70 hover:bg-blue-700 hover:text-white"
+                    ? "bg-blue-600 text-white hover:bg-blue-500"
+                    : "bg-blue-800 text-white/70 hover:bg-blue-700 hover:text-white"
                 }
               `}
               onClick={() => setActiveTab(tab.id)}
@@ -92,7 +92,7 @@ export function FeatureTabs() {
             {tabs.map((tab) => (
               <div
                 key={tab.id}
-                className={`absolute  inset-0 transition-opacity overflow-hidden duration-500  
+                className={`absolute inset-0 transition-opacity overflow-hidden duration-500  
                   ${
                     activeTab === tab.id
                       ? "opacity-100"
@@ -100,45 +100,46 @@ export function FeatureTabs() {
                   }
                 `}
               >
-                <Image
-                  src={tab.image}
-                  alt={`${tab.label} dashboard`}
-                  fill
-                  className="object-cover rounded-[10px] "
-                  priority={tab.id === "invoice"}
-                />
+                <tab.icon />
               </div>
             ))}
           </div>
 
-          {/* Text content */}
-          <div className="text-white space-y-6 order-1 md:order-2 ">
-            {tabs.map((tab) => (
-              <div
-                key={tab.id}
-                className={`transition-opacity duration-500 max-w-md mx-auto  md:max-w-[388px]
-                  ${
-                    activeTab === tab.id
-                      ? "opacity-100"
-                      : "opacity-0 pointer-events-none absolute"
-                  }
-                `}
-              >
-                <div className="h-[250px]">
-                  <h3 className="md:text-3xl font-medium mb-4">{tab.title}</h3>
-                  <p className="text-xl text-white/90 mb-8">
-                    {tab.description}
-                  </p>
-                </div>
-                <Button
-                  variant="link"
-                  className="text-white flex items-center group p-0 text-lg md:text-xl h-auto font-normal hover:no-underline"
-                >
-                  Learn more
-                  <ArrowRight className="ml-2 h-6 w-4 mt-1 transition-transform group-hover:translate-x-1" />
-                </Button>
+          {/* Text content - Fixed version */}
+          <div className="text-white space-y-6 order-1 md:order-2">
+            <div className="relative max-w-md mx-auto md:max-w-[388px]">
+              {/* Fixed height container to prevent layout shift */}
+              <div className="h-[250px] relative">
+                {tabs.map((tab) => (
+                  <div
+                    key={tab.id}
+                    className={`absolute inset-0 transition-opacity duration-500
+                      ${
+                        activeTab === tab.id
+                          ? "opacity-100"
+                          : "opacity-0 pointer-events-none"
+                      }
+                    `}
+                  >
+                    <h3 className="md:text-3xl font-medium mb-4">
+                      {tab.title}
+                    </h3>
+                    <p className="text-xl text-white/90 mb-8">
+                      {tab.description}
+                    </p>
+                  </div>
+                ))}
               </div>
-            ))}
+
+              {/* Learn more button - outside the transitioning content */}
+              <Button
+                variant="link"
+                className="text-white flex items-center group p-0 text-lg md:text-xl h-auto font-normal hover:no-underline"
+              >
+                Learn more
+                <ArrowRight className="ml-2 h-6 w-4 mt-1 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>
