@@ -233,7 +233,7 @@ export function FixedHeader() {
         className="border-b fixed left-0 right-0 w-full bg-white transition-all duration-300 z-50"
         style={{ top: notificationVisible ? "2.5rem" : 0 }}
       >
-        <nav className="max-w-7xl mx-auto px-4 flex items-center justify-between py-[26]">
+        <nav className="max-w-7xl mx-auto px-4 flex items-center justify-between h-[80px]">
           <Link href="/">
             <Verzologosmall />
           </Link>
