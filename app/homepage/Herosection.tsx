@@ -57,7 +57,7 @@ export function HeroCarousel() {
   }, []);
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-r from-white to-blue-50 pt-16 md:pt-28">
+    <div className="relative overflow-hidden bg-gradient-to-r from-white to-blue-50 pt-16 md:pt-36">
       <div className="max-w-7xl mx-auto sm:px-4">
         <div className="relative min-h-[500px] sm:min-h-[600px] md:h-[500px]">
           {slides.map((slide, index) => (

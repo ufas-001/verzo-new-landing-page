@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { NotificationBanner } from "@/components/notifcation-banner";
+import { NotificationProvider } from "@/components/notification-context";
+
 
 
 
@@ -17,8 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NotificationBanner message="Get 70% off Verzo premium for the first 3 months" />
-        {children}
+        <NotificationProvider>
+          <NotificationBanner message="Get 70% off Verzo premium for the first 3 months" />
+          {children}
+        </NotificationProvider>
       </body>
     </html>
   );

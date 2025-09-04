@@ -58,8 +58,8 @@ const InvoicingFeatures = () => {
         </div>
 
         {/* Feature cards */}
-        <div className="">
-          <div className="flex row w-full items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex row w-full items-center justify-between ">
             <div className="w-1/2">
               <InvoiceToolIcon1 />
             </div>

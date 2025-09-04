@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import ManagementTool1 from "@/public/management-tool-1";
 import ManagementTool2 from "@/public/management-tool-2";
+import ManagementTool3 from "@/public/management-tool-3";
+import ManagementTool4 from "@/public/managemment-tool-4.";
 
 const tabs = [
   {
@@ -29,7 +31,7 @@ const tabs = [
     title: "Need a stress-free way to pay your staff?",
     description:
       "Automate payment schedules, calculate salaries accurately, and pay your team on time. No manual work required.",
-    icon: ManagementTool2,
+    icon: ManagementTool3,
   },
   {
     id: "cards",
@@ -37,7 +39,7 @@ const tabs = [
     title: "Need a faster way to pay for business expenses?",
     description:
       "With Verzo's virtual cards, control spending, and track every transaction in one place no paperwork or bank queues.",
-    icon: ManagementTool2,
+    icon: ManagementTool4,
   },
 ];
 

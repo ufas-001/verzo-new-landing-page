@@ -58,7 +58,7 @@ const PurchaseFeatures = () => {
         </div>
 
         {/* Feature cards */}
-        <div className="">
+        <div className="max-w-6xl mx-auto px-4">
           <div className="flex row w-full items-center justify-between">
             <div className="w-1/2">
               <PayrollTool1 />

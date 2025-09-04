@@ -1,7 +1,7 @@
+import CardTools1 from "@/public/card-tools-1";
 import CheckIcon2 from "../components/CheckIcon2";
-import ExpenseTool1 from "@/public/expenseTool1";
-import ExpenseTool2 from "@/public/expenseTool2";
-import ExpenseTool3 from "@/public/expenseTool3";
+import CardTools2 from "@/public/card-tools-2";
+import CardTools3 from "@/public/card-tools-3";
 // // Define the type for the feature
 // type Feature = {
 //   title: string;
@@ -30,13 +30,13 @@ import ExpenseTool3 from "@/public/expenseTool3";
 //   },
 // ];
 
-const ExpenseFeatures = () => {
+const CardFeatures = () => {
   return (
     <section className="w-full py-12 md:py-20 bg-primary-faintBlue">
       <div className="max-w-7xl mx-auto px-4">
         {/* Main heading */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-center mb-8 md:mb-12 leading-tight">
-          Start With The Best Expense Tool
+          Cards Built for Business Control
         </h2>
 
         {/* Feature highlights */}
@@ -60,42 +60,40 @@ const ExpenseFeatures = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex row w-full items-center justify-between">
             <div className="w-1/2">
-              <ExpenseTool1 />
+              <CardTools1 />
             </div>
             <div className="w-1/2 ">
-              <h1 className="text-[36px]">Keep Track of What Goes Out</h1>
+              <h1 className="text-[36px]">Get Your Card in Minutes</h1>
               <p className="text-lg text-primary-lightGray pt-3">
-                Record expenses and purchases as they happen, keep your vendor
-                details in one place, and maintain clear and organized records.
+                Finish your account setup and start using your virtual card
+                immediately no waiting, no paperwork.
               </p>
             </div>
           </div>
 
           <div className="flex row w-full items-center justify-between">
             <div className="w-1/2">
-              <h1 className="text-[36px]">Pay Vendors Without the Confusion</h1>
+              <h1 className="text-[36px]">Track Every Transaction with Ease</h1>
               <p className="text-lg text-primary-lightGray pt-3">
-                Send payments now or later, tag each expense, and store vendor
-                details and receipts so every expense is easy to trace and
-                audit-ready.
+                Decide how much can be spent per card or per transaction to stay
+                on top of business budgets.
               </p>
             </div>
             <div className="w-1/2 flex justify-end">
-              <ExpenseTool2 />
+              <CardTools2 />
             </div>
           </div>
           <div className="flex row w-full items-center justify-between">
             <div className="w-1/2">
-              <ExpenseTool3 />
+              <CardTools3 />
             </div>
             <div className="w-1/2 ">
               <h1 className="text-[36px]">
                 Turn Spending Into Clear Business Insights
               </h1>
               <p className="text-lg text-primary-lightGray pt-3">
-                From daily expenses to large purchases, Verzo organizes your
-                payment history, vendor data, and receipts to reveal patterns
-                that support better decisions.
+                Every payment is recorded instantly and ready to be matched with
+                your invoices or expenses so your books stay clean.
               </p>
             </div>
           </div>
@@ -105,4 +103,4 @@ const ExpenseFeatures = () => {
   );
 };
 
-export default ExpenseFeatures;
+export default CardFeatures;

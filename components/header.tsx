@@ -2,15 +2,23 @@
 import Verzologosmall from "@/app/components/verzoLogoSmall";
 import { HoverCard } from "@radix-ui/react-hover-card";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
-import { ArrowUpDown, ChevronDown, ChevronUp, Mail, Menu, Phone, PlusCircle, Scroll } from "lucide-react";
+import {
+  ArrowUpDown,
+  ChevronDown,
+  ChevronUp,
+  Mail,
+  Menu,
+  Phone,
+  PlusCircle,
+  Scroll,
+} from "lucide-react";
 import { Button } from "./ui/button";
 import React from "react";
 import Mobilemenu from "./MobileMenu";
 import { usePathname, useRouter } from "next/navigation";
-
-
+import { useNotification } from "./notification-context";
 
 const features = [
   {
@@ -120,6 +128,43 @@ const features = [
         description: "Track Your Business Expenses Without Lifting a Finger",
         link: "/expense",
       },
+      {
+        icon: (
+          <svg
+            width="25"
+            height="24"
+            viewBox="0 0 25 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3.95012 9.30141H21.9501M7.55012 13.5014H10.5501M5.75059 5.10156H20.1502C21.4757 5.10156 22.5502 6.17524 22.5502 7.50069L22.5505 16.5026C22.5505 17.8281 21.476 18.9016 20.1505 18.9015L5.75082 18.9014C4.42537 18.9014 3.35088 17.8269 3.35084 16.5015L3.35059 7.50163C3.35055 6.17612 4.42508 5.10156 5.75059 5.10156Z"
+              stroke="url(#paint0_linear_14727_10747)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <defs>
+              <linearGradient
+                id="paint0_linear_14727_10747"
+                x1="3.35059"
+                y1="5.3349"
+                x2="24.3394"
+                y2="14.6865"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0.307292" stopColor="#027DFF" stopOpacity="0.9" />
+                <stop offset="0.494792" stopColor="#027DFF" stopOpacity="0.9" />
+                <stop offset="0.958333" stopColor="#027DFF" />
+              </linearGradient>
+            </defs>
+          </svg>
+        ),
+        header: "Virtual Cards For Your Business Spending",
+        description:
+          "Create virtual cards for secure, trackable payments anytime.",
+        link: "/card",
+      },
     ],
     byUseCase: [
       {
@@ -135,8 +180,6 @@ const features = [
     ],
   },
 ];
-
-
 
 const resources = [
   {
@@ -164,42 +207,25 @@ const resources = [
 ];
 
 export function FixedHeader() {
-  const [notificationVisible, setNotificationVisible] = useState(true);
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
-   const emailAddress = "technology@verzo.app";
-   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-   const handleCloseMobileMenu = () => {
-     setMobileMenuOpen(false);
-   };
+  const emailAddress = "technology@verzo.app";
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { notificationVisible } = useNotification();
+  const handleCloseMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
 
-   const router = useRouter();
-   const pathname = usePathname();
+  const router = useRouter();
+  const pathname = usePathname();
 
-   const handleNavClick = (link: string) => {
-     setHoveredMenu(null);
-     // Force navigation even if on same page
-     if (pathname === link) {
-       router.push(link);
-       router.refresh(); // Force a refresh if on same page
-     }
-   };
-
-
-
-  useEffect(() => {
-    const handleNotificationClose = () => {
-      setNotificationVisible(false);
-    };
-
-    window.addEventListener("notification-closed", handleNotificationClose);
-
-    return () => {
-      window.removeEventListener(
-        "notification-closed",
-        handleNotificationClose
-      );
-    };
-  }, []);
+  const handleNavClick = (link: string) => {
+    setHoveredMenu(null);
+    // Force navigation even if on same page
+    if (pathname === link) {
+      router.push(link);
+      router.refresh(); // Force a refresh if on same page
+    }
+  };
 
   return (
     <>
@@ -207,11 +233,14 @@ export function FixedHeader() {
         className="border-b fixed left-0 right-0 w-full bg-white transition-all duration-300 z-50"
         style={{ top: notificationVisible ? "2.5rem" : 0 }}
       >
-        <nav className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+        <nav className="max-w-7xl mx-auto px-4 flex items-center justify-between py-[26]">
           <Link href="/">
             <Verzologosmall />
           </Link>
           <div className="hidden md:flex items-center gap-14">
+            <Link href="/" className="text-black text-lg hover:text-gray-900">
+              About us
+            </Link>
             {features.map((item) => (
               <HoverCard
                 openDelay={200}
@@ -223,7 +252,7 @@ export function FixedHeader() {
                 key={item.name}
               >
                 <HoverCardTrigger className="text-gray-600 flex flex-row items-center gap-x-[6px] text-primary-greytext hover:text-primary-brandBlue cursor-pointer transition-colors">
-                  <span className="text-black text-lg">Feature</span>
+                  <span className="text-black text-lg">Features</span>
                   <div className="relative w-4 h-4">
                     <ChevronDown
                       className={`w-4 h-4 absolute transition-all duration-300 ${
@@ -242,7 +271,7 @@ export function FixedHeader() {
                   </div>
                 </HoverCardTrigger>
 
-                <HoverCardContent className="w-screen mr-[3px] bg-white flex flex-col gap-y-[31px] shadow-md mt-[16px] rounded-b-[30px] h-[500px]">
+                <HoverCardContent className="w-screen mr-[3px] bg-white flex flex-col gap-y-[31px] shadow-md mt-[16px] rounded-b-[30px] h-[600px]">
                   <div className="w-[85%] mx-auto flex flex-row gap-x-[56px] justify-between pt-[45px] pb-[72px] h-full">
                     <div className="gap-y-[16px] flex flex-col w-1/3 h-full">
                       <p className="text-[16px] text-primary-greytext pl-[16px]">
@@ -261,7 +290,7 @@ export function FixedHeader() {
                                   {product.icon}
                                 </div>
                               )}
-                              <h2 className="text-[16px] font-medium text-gray-700">
+                              <h2 className="text-[14px] font-medium text-gray-700">
                                 {product.header}
                               </h2>
                             </div>
@@ -328,9 +357,7 @@ export function FixedHeader() {
             >
               Pricing
             </Link>
-            <Link href="/" className="text-black text-lg hover:text-gray-900">
-              About
-            </Link>
+
             {resources.map((item) => (
               <HoverCard
                 openDelay={200}
@@ -361,7 +388,7 @@ export function FixedHeader() {
                   </div>
                 </HoverCardTrigger>
 
-                <HoverCardContent className="w-screen mr-[3px] flex flex-col gap-y-[31px] bg-white shadow-md mt-[16px] rounded-b-[30px] h-[500px]">
+                <HoverCardContent className="w-screen mr-[3px] flex flex-col gap-y-[31px] bg-white shadow-md mt-[16px] rounded-b-[30px] h-[600px]">
                   <div className="w-[85%] mx-auto flex flex-row gap-x-[56px] justify-between pt-[45px] pb-[72px] h-full">
                     <div className="gap-y-[16px] flex flex-col w-1/3 h-full">
                       {item.byProduct.map((product, productIndex) => (
@@ -444,56 +471,118 @@ export function FixedHeader() {
               </HoverCard>
             ))}
 
-            <HoverCard
-              openDelay={200}
-              closeDelay={100}
-              onOpenChange={(open) => {
-                if (open) setHoveredMenu("resources");
-                else if (hoveredMenu === "resources") setHoveredMenu(null);
-              }}
-            >
-              <HoverCardTrigger className="text-gray-600 flex flex-row items-center gap-x-[6px] text-primary-greytext hover:text-primary-brandBlue cursor-pointer transition-colors">
-                <span className="text-black text-lg">Resources</span>
-                <div className="relative w-4 h-4">
-                  <ChevronDown
-                    className={`w-4 h-4 absolute transition-all duration-300 ${
-                      hoveredMenu === "resources"
-                        ? "opacity-0 transform rotate-180"
-                        : "opacity-100"
-                    }`}
-                  />
-                  <ChevronUp
-                    className={`w-4 h-4 absolute transition-all duration-300 ${
-                      hoveredMenu === "resources"
-                        ? "opacity-100 transform rotate-0"
-                        : "opacity-0 transform -rotate-180"
-                    }`}
-                  />
-                </div>
-              </HoverCardTrigger>
-
-              <HoverCardContent className="w-screen mr-[3px] bg-white flex flex-col gap-y-[31px] shadow-md mt-[16px] rounded-b-[30px] h-[500px]">
-                <div className="p-6">
-                  {/* {resourceItems.map((column, colIndex) => (
-                  <div key={colIndex} className="space-y-4">
-                    {column.map((item, itemIndex) => (
-                      <div key={itemIndex}>
-                        <Link href={item.href} className="block group">
-                          <h3 className="text-blue-600 font-medium text-lg mb-1 group-hover:text-blue-700">
-                            {item.title}
-                          </h3>
-                          <p className="text-gray-700">{item.description}</p>
-                        </Link>
-                        {itemIndex < column.length - 1 && (
-                          <div className="h-px bg-gray-200 mt-4" />
-                        )}
-                      </div>
-                    ))}
+            {resources.map((item) => (
+              <HoverCard
+                openDelay={200}
+                closeDelay={100}
+                onOpenChange={(open) => {
+                  if (open) setHoveredMenu("resources");
+                  else if (hoveredMenu === "resources") setHoveredMenu(null);
+                }}
+                key={item.name}
+              >
+                <HoverCardTrigger className="text-gray-600 flex flex-row items-center gap-x-[6px] text-primary-greytext hover:text-primary-brandBlue cursor-pointer transition-colors">
+                  <span className="text-black text-lg">Resources</span>
+                  <div className="relative w-4 h-4">
+                    <ChevronDown
+                      className={`w-4 h-4 absolute transition-all duration-300 ${
+                        hoveredMenu === "resources"
+                          ? "opacity-0 transform rotate-180"
+                          : "opacity-100"
+                      }`}
+                    />
+                    <ChevronUp
+                      className={`w-4 h-4 absolute transition-all duration-300 ${
+                        hoveredMenu === "resources"
+                          ? "opacity-100 transform rotate-0"
+                          : "opacity-0 transform -rotate-180"
+                      }`}
+                    />
                   </div>
-                ))} */}
-                </div>
-              </HoverCardContent>
-            </HoverCard>
+                </HoverCardTrigger>
+
+                <HoverCardContent className="w-screen mr-[3px] flex flex-col gap-y-[31px] bg-white shadow-md mt-[16px] rounded-b-[30px] h-[600px]">
+                  <div className="w-[85%] mx-auto flex flex-row gap-x-[56px] justify-between pt-[45px] pb-[72px] h-full">
+                    <div className="gap-y-[16px] flex flex-col w-1/3 h-full">
+                      {item.byProduct.map((product, productIndex) => (
+                        <React.Fragment key={productIndex}>
+                          {product.link.includes("blog") ? (
+                            <a
+                              href={product.link}
+                              className="flex flex-col gap-y-2 p-4 hover:bg-gray-50 hover:text-gray-700 text-gray-700 rounded-[14px]"
+                            >
+                              <div className="flex items-center">
+                                <h2 className="text-[14px] font-medium">
+                                  {product.header}
+                                </h2>
+                              </div>
+                              <p className="text-[14px] text-start">
+                                {product.description}
+                              </p>
+                            </a>
+                          ) : (
+                            <button
+                              className="flex flex-col gap-y-2 p-4 bg-gray-50 text-gray-500 cursor-not-allowed rounded-[14px]"
+                              disabled
+                            >
+                              <div className="flex items-center">
+                                <h2 className="text-[14px] font-medium">
+                                  {product.header}
+                                </h2>
+                              </div>
+                              <p className="text-[14px] text-start">
+                                {product.description}
+                              </p>
+                            </button>
+                          )}
+                        </React.Fragment>
+                      ))}
+                    </div>
+                    <div className="gap-y-[16px] flex flex-col w-1/3 h-full">
+                      {item.byUseCase.map((useCase, useCaseIndex) => (
+                        <button
+                          key={useCaseIndex}
+                          className="flex flex-col gap-y-2 p-4 bg-gray-50 text-gray-500 cursor-not-allowed rounded-[14px]"
+                          disabled
+                        >
+                          <div className="flex items-center">
+                            <h2 className="text-[16px] font-medium text-gray-500">
+                              {useCase.header}
+                            </h2>
+                          </div>
+                          <p className="text-[14px]">{useCase.description}</p>
+                        </button>
+                      ))}
+                    </div>
+                    <button className="w-1/3 bg-gray-100 bg-opacity-70 cursor-default rounded-[24px] flex flex-col justify-center items-start gap-y-[24px] h-[240px] p-[32px]">
+                      <p className="text-[17px] text-primary-greytext">
+                        Useful links
+                      </p>
+                      <ul className="flex flex-col gap-y-[20px]">
+                        <Link href="/pricing">
+                          <li className="flex flex-row gap-x-[14px] items-center cursor-pointer text-[16px] font-medium text-gray-700">
+                            <ArrowUpDown className="text-gray-500 w-5 h-5" />
+                            Verzo Perks
+                          </li>
+                        </Link>
+                        <Link target="_blank" href="https://blog.verzo.app/">
+                          <li className="flex flex-row gap-x-[14px] items-center text-[16px] font-medium text-gray-700">
+                            <Scroll className="text-gray-500 w-5 h-5" />
+                            Our Blog
+                          </li>
+                        </Link>
+                        <Link href="tel:09066181506">
+                          <li className="flex flex-row gap-x-[14px] items-center cursor-pointer text-[16px] font-medium text-gray-700">
+                            <Phone className="text-gray-500 w-5 h-5" />
+                            Talk to our team
+                          </li>
+                        </Link>
+                      </ul>
+                    </button>
+                  </div>
+                </HoverCardContent>
+              </HoverCard>
+            ))}
           </div>
           <div className="md:hidden">
             <button
