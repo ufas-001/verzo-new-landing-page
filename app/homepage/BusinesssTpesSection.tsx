@@ -26,7 +26,11 @@ const businessTypes = [
 ];
 
 // Array of background images to cycle through
-const backgroundImages = ["/f600.png", "/Container-1.png", "/Container.png"];
+const backgroundImages = [
+  "/Container-1.png",
+  "/Container-3.png",
+  "/Container-2.png",
+];
 
 export function BusinessTypesSection() {
   // State to track current image index

@@ -2,7 +2,7 @@
 import Verzologosmall from "@/app/components/verzoLogoSmall";
 import { HoverCard } from "@radix-ui/react-hover-card";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import {
   ArrowUpDown,
@@ -162,7 +162,7 @@ const features = [
         ),
         header: "Virtual Cards For Your Business Spending",
         description:
-          "Create virtual cards for secure, trackable payments anytime.",
+          "Create virtual cards for secure, trackable payments anytime.",
         link: "/card",
       },
     ],
@@ -171,11 +171,14 @@ const features = [
         header: "Fashion businesses and SME's",
         description:
           "Empower fashion businesses and SMEs to streamline financial operations and extend their financial runway without taking on debt or losing equity.",
-      },
+        link: "/use-case"
+        },
       {
         header: "E-commerce Retailers",
         description:
           "Effortlessly manage finances, and optimize profits for e-commerce retailers. Our app ensures better control over financial operations without the complexities.",
+      
+        link: "/use-case"
       },
     ],
   },
@@ -208,9 +211,12 @@ const resources = [
 
 export function FixedHeader() {
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
+  const [clickedMenu, setClickedMenu] = useState<string | null>(null);
   const emailAddress = "technology@verzo.app";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { notificationVisible } = useNotification();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
   const handleCloseMobileMenu = () => {
     setMobileMenuOpen(false);
   };
@@ -220,12 +226,57 @@ export function FixedHeader() {
 
   const handleNavClick = (link: string) => {
     setHoveredMenu(null);
+    setClickedMenu(null);
     // Force navigation even if on same page
     if (pathname === link) {
       router.push(link);
       router.refresh(); // Force a refresh if on same page
     }
   };
+
+  const handleMenuClick = (menuName: string) => {
+    if (clickedMenu === menuName) {
+      setClickedMenu(null);
+    } else {
+      setClickedMenu(menuName);
+      setHoveredMenu(null); // Clear hover state when clicking
+    }
+  };
+
+  const handleMouseEnter = (menuName: string) => {
+    if (!clickedMenu) {
+      setHoveredMenu(menuName);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredMenu(null);
+    setClickedMenu(null); // Also clear clicked menu on mouse leave
+  };
+
+  const isMenuOpen = (menuName: string) => {
+    return (
+      clickedMenu === menuName || (hoveredMenu === menuName && !clickedMenu)
+    );
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setClickedMenu(null);
+        setHoveredMenu(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -237,33 +288,34 @@ export function FixedHeader() {
           <Link href="/">
             <Verzologosmall />
           </Link>
-          <div className="hidden md:flex items-center gap-14">
+          <div className="hidden md:flex items-center gap-14" ref={dropdownRef}>
             <Link href="/" className="text-black text-lg hover:text-gray-900">
               About us
             </Link>
             {features.map((item) => (
               <HoverCard
-                openDelay={200}
-                closeDelay={100}
-                onOpenChange={(open) => {
-                  if (open) setHoveredMenu("feature");
-                  else if (hoveredMenu === "feature") setHoveredMenu(null);
-                }}
                 key={item.name}
+                open={isMenuOpen("feature")}
+                onOpenChange={() => {}} // Disable default behavior
               >
-                <HoverCardTrigger className="text-gray-600 flex flex-row items-center gap-x-[6px] text-primary-greytext hover:text-primary-brandBlue cursor-pointer transition-colors">
+                <HoverCardTrigger
+                  className="text-gray-600 flex flex-row items-center gap-x-[6px] text-primary-greytext hover:text-primary-brandBlue cursor-pointer transition-colors"
+                  onClick={() => handleMenuClick("feature")}
+                  onMouseEnter={() => handleMouseEnter("feature")}
+                  onMouseLeave={handleMouseLeave}
+                >
                   <span className="text-black text-lg">Features</span>
                   <div className="relative w-4 h-4">
                     <ChevronDown
                       className={`w-4 h-4 absolute transition-all duration-300 ${
-                        hoveredMenu === "feature"
+                        isMenuOpen("feature")
                           ? "opacity-0 transform rotate-180"
                           : "opacity-100"
                       }`}
                     />
                     <ChevronUp
                       className={`w-4 h-4 absolute transition-all duration-300 ${
-                        hoveredMenu === "feature"
+                        isMenuOpen("feature")
                           ? "opacity-100 transform rotate-0"
                           : "opacity-0 transform -rotate-180"
                       }`}
@@ -271,7 +323,11 @@ export function FixedHeader() {
                   </div>
                 </HoverCardTrigger>
 
-                <HoverCardContent className="w-screen mr-[3px] bg-white flex flex-col gap-y-[31px] shadow-md mt-[16px] rounded-b-[30px] h-[600px]">
+                <HoverCardContent
+                  className="w-screen mr-[3px] bg-white flex flex-col gap-y-[31px] shadow-md mt-[16px] rounded-b-[30px] h-[600px]"
+                  onMouseEnter={() => handleMouseEnter("feature")}
+                  onMouseLeave={handleMouseLeave}
+                >
                   <div className="w-[85%] mx-auto flex flex-row gap-x-[56px] justify-between pt-[45px] pb-[72px] h-full">
                     <div className="gap-y-[16px] flex flex-col w-1/3 h-full">
                       <p className="text-[16px] text-primary-greytext pl-[16px]">
@@ -306,17 +362,16 @@ export function FixedHeader() {
                         By Use Case
                       </p>
                       {item.byUseCase.map((useCase, useCaseIndex) => (
-                        <div
-                          key={useCaseIndex}
-                          className="flex flex-col gap-y-2 p-4 hover:bg-gray-50 hover:text-gray-700 text-gray-400 duration-100 transition-all ease-in-out cursor-pointer rounded-[14px]"
-                        >
-                          <div className="flex items-center">
-                            <h2 className="text-[16px] font-medium text-gray-700">
-                              {useCase.header}
-                            </h2>
+                        <Link href={useCase.link} key={useCaseIndex}>
+                          <div className="flex flex-col gap-y-2 p-4 hover:bg-gray-50 hover:text-gray-700 text-gray-400 duration-100 transition-all ease-in-out cursor-pointer rounded-[14px]">
+                            <div className="flex items-center">
+                              <h2 className="text-[16px] font-medium text-gray-700">
+                                {useCase.header}
+                              </h2>
+                            </div>
+                            <p className="text-[14px]">{useCase.description}</p>
                           </div>
-                          <p className="text-[14px]">{useCase.description}</p>
-                        </div>
+                        </Link>
                       ))}
                     </div>
                     <button className="w-1/3 bg-gray-100 bg-opacity-70 cursor-default rounded-[24px] flex flex-col justify-center items-start gap-y-[24px] h-[240px] p-[32px]">
@@ -360,27 +415,28 @@ export function FixedHeader() {
 
             {resources.map((item) => (
               <HoverCard
-                openDelay={200}
-                closeDelay={100}
-                onOpenChange={(open) => {
-                  if (open) setHoveredMenu("company");
-                  else if (hoveredMenu === "company") setHoveredMenu(null);
-                }}
                 key={item.name}
+                open={isMenuOpen("company")}
+                onOpenChange={() => {}} // Disable default behavior
               >
-                <HoverCardTrigger className="text-gray-600 flex flex-row items-center gap-x-[6px] text-primary-greytext hover:text-primary-brandBlue cursor-pointer transition-colors">
+                <HoverCardTrigger
+                  className="text-gray-600 flex flex-row items-center gap-x-[6px] text-primary-greytext hover:text-primary-brandBlue cursor-pointer transition-colors"
+                  onClick={() => handleMenuClick("company")}
+                  onMouseEnter={() => handleMouseEnter("company")}
+                  onMouseLeave={handleMouseLeave}
+                >
                   <span className="text-black text-lg">Company</span>
                   <div className="relative w-4 h-4">
                     <ChevronDown
                       className={`w-4 h-4 absolute transition-all duration-300 ${
-                        hoveredMenu === "company"
+                        isMenuOpen("company")
                           ? "opacity-0 transform rotate-180"
                           : "opacity-100"
                       }`}
                     />
                     <ChevronUp
                       className={`w-4 h-4 absolute transition-all duration-300 ${
-                        hoveredMenu === "company"
+                        isMenuOpen("company")
                           ? "opacity-100 transform rotate-0"
                           : "opacity-0 transform -rotate-180"
                       }`}
@@ -388,7 +444,11 @@ export function FixedHeader() {
                   </div>
                 </HoverCardTrigger>
 
-                <HoverCardContent className="w-screen mr-[3px] flex flex-col gap-y-[31px] bg-white shadow-md mt-[16px] rounded-b-[30px] h-[600px]">
+                <HoverCardContent
+                  className="w-screen mr-[3px] flex flex-col gap-y-[31px] bg-white shadow-md mt-[16px] rounded-b-[30px] h-[600px]"
+                  onMouseEnter={() => handleMouseEnter("company")}
+                  onMouseLeave={handleMouseLeave}
+                >
                   <div className="w-[85%] mx-auto flex flex-row gap-x-[56px] justify-between pt-[45px] pb-[72px] h-full">
                     <div className="gap-y-[16px] flex flex-col w-1/3 h-full">
                       {item.byProduct.map((product, productIndex) => (
@@ -473,27 +533,28 @@ export function FixedHeader() {
 
             {resources.map((item) => (
               <HoverCard
-                openDelay={200}
-                closeDelay={100}
-                onOpenChange={(open) => {
-                  if (open) setHoveredMenu("resources");
-                  else if (hoveredMenu === "resources") setHoveredMenu(null);
-                }}
                 key={item.name}
+                open={isMenuOpen("resources")}
+                onOpenChange={() => {}} // Disable default behavior
               >
-                <HoverCardTrigger className="text-gray-600 flex flex-row items-center gap-x-[6px] text-primary-greytext hover:text-primary-brandBlue cursor-pointer transition-colors">
+                <HoverCardTrigger
+                  className="text-gray-600 flex flex-row items-center gap-x-[6px] text-primary-greytext hover:text-primary-brandBlue cursor-pointer transition-colors"
+                  onClick={() => handleMenuClick("resources")}
+                  onMouseEnter={() => handleMouseEnter("resources")}
+                  onMouseLeave={handleMouseLeave}
+                >
                   <span className="text-black text-lg">Resources</span>
                   <div className="relative w-4 h-4">
                     <ChevronDown
                       className={`w-4 h-4 absolute transition-all duration-300 ${
-                        hoveredMenu === "resources"
+                        isMenuOpen("resources")
                           ? "opacity-0 transform rotate-180"
                           : "opacity-100"
                       }`}
                     />
                     <ChevronUp
                       className={`w-4 h-4 absolute transition-all duration-300 ${
-                        hoveredMenu === "resources"
+                        isMenuOpen("resources")
                           ? "opacity-100 transform rotate-0"
                           : "opacity-0 transform -rotate-180"
                       }`}
@@ -501,7 +562,11 @@ export function FixedHeader() {
                   </div>
                 </HoverCardTrigger>
 
-                <HoverCardContent className="w-screen mr-[3px] flex flex-col gap-y-[31px] bg-white shadow-md mt-[16px] rounded-b-[30px] h-[600px]">
+                <HoverCardContent
+                  className="w-screen mr-[3px] flex flex-col gap-y-[31px] bg-white shadow-md mt-[16px] rounded-b-[30px] h-[600px]"
+                  onMouseEnter={() => handleMouseEnter("resources")}
+                  onMouseLeave={handleMouseLeave}
+                >
                   <div className="w-[85%] mx-auto flex flex-row gap-x-[56px] justify-between pt-[45px] pb-[72px] h-full">
                     <div className="gap-y-[16px] flex flex-col w-1/3 h-full">
                       {item.byProduct.map((product, productIndex) => (
