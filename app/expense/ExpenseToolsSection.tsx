@@ -58,7 +58,7 @@ const ExpenseFeatures = () => {
 
         {/* Feature cards */}
         <div className="max-w-6xl mx-auto px-4">
-          <div className="flex row w-full items-center justify-between">
+          <div className="flex row w-full items-center justify-between mb-12">
             <div className="w-1/2">
               <ExpenseTool1 />
             </div>
@@ -71,7 +71,7 @@ const ExpenseFeatures = () => {
             </div>
           </div>
 
-          <div className="flex row w-full items-center justify-between">
+          <div className="flex row w-full items-center justify-between mb-12">
             <div className="w-1/2">
               <h1 className="text-[36px]">Pay Vendors Without the Confusion</h1>
               <p className="text-lg text-primary-lightGray pt-3">
