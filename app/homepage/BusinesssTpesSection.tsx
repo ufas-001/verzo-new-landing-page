@@ -9,19 +9,19 @@ const businessTypes = [
     title: "Freelancers",
     description:
       "Tired of chasing payments, tracking expenses and spending hours on records? Our all-in-one tool lets you send invoices, manage spending, and stay in control of your finances effortlessly, right within your daily workflow.",
-    link: "/freelancers",
+    link: "use-case/freelancers",
   },
   {
     title: "Solopreneurs",
     description:
       "When you’re the one handling sales, spend, and salaries, it’s easy for things to fall through the cracks. Verzo helps you keep everything organized in one place so you stay focused on running your business, not running after details.",
-    link: "/solopreneurs",
+    link: "use-case/solopreneurs",
   },
   {
     title: "Small businesses",
     description:
       "The more your business grows, the harder it is to track who’s paying, what’s being bought, and where money’s going. Verzo brings clarity to your cashflow and keeps your team moving with tools built for small business demands.",
-    link: "/businesses-with-employees",
+    link: "use-case/small-businesses",
   },
 ];
 
