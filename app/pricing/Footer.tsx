@@ -42,7 +42,7 @@ export default function Footer() {
                 <ul className="space-y-3">
                   <li>
                     <Link
-                      href="#"
+                      href="/invoicing"
                       className="hover:opacity-80 transition-opacity text-sm md:text-base"
                     >
                       Invoice
@@ -50,15 +50,15 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/payroll"
                       className="hover:opacity-80 transition-opacity text-sm md:text-base"
                     >
-                      Purchase
+                      Payroll
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/expense"
                       className="hover:opacity-80 transition-opacity text-sm md:text-base"
                     >
                       Expense
@@ -66,7 +66,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/card"
                       className="hover:opacity-80 transition-opacity text-sm md:text-base"
                     >
                       Virtual card
@@ -81,7 +81,7 @@ export default function Footer() {
                 <ul className="space-y-3">
                   <li>
                     <Link
-                      href="#"
+                      href="/about"
                       className="hover:opacity-80 transition-opacity text-sm md:text-base"
                     >
                       About Us
@@ -89,7 +89,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/contact"
                       className="hover:opacity-80 transition-opacity text-sm md:text-base"
                     >
                       Contact
@@ -98,6 +98,7 @@ export default function Footer() {
                   <li>
                     <Link
                       href="#"
+                      aria-disabled="true"
                       className="hover:opacity-80 transition-opacity text-sm md:text-base"
                     >
                       Careers
@@ -111,12 +112,12 @@ export default function Footer() {
                 <h3 className="text-lg font-semibold mb-4">Resources</h3>
                 <ul className="space-y-3">
                   <li>
-                    <Link
+                    {/* <Link
                       href="#"
                       className="hover:opacity-80 transition-opacity text-sm md:text-base"
                     >
                       Use cases
-                    </Link>
+                    </Link> */}
                   </li>
                   <li>
                     <Link
@@ -128,7 +129,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="https://kb.verzo.app/"
                       className="hover:opacity-80 transition-opacity text-sm md:text-base"
                     >
                       Knowledgebase
@@ -136,7 +137,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/terms"
                       className="hover:opacity-80 transition-opacity text-sm md:text-base"
                     >
                       Terms of Service
@@ -144,20 +145,20 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/privacy"
                       className="hover:opacity-80 transition-opacity text-sm md:text-base"
                     >
                       Privacy Policy
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link
                       href="#"
                       className="hover:opacity-80 transition-opacity text-sm md:text-base"
                     >
                       Cookie Policy
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>

@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 // import Image from "next/image";
-import ExpenseHero from "@/public/expenseHero"
-
+import PayrollHero from "@/public/payrollHero"; // Importing the payroll hero image
 
 const slides = [
   {
@@ -9,14 +8,14 @@ const slides = [
     title: "Pay Your Team Without Stress",
     description:
       "Automate pay schedules, keep staff information tidy, and run payroll with confidence as your business scales.",
-    image: ExpenseHero, // Image in public directory
+    image: PayrollHero, // Image in public directory
     cta: "Get 30 days free",
   },
 ];
 
 const HeroSection = () => {
   return (
-    <div className="relative overflow-hidden  pt-16 md:pt-20">
+    <div className="relative overflow-hidden bg-gradient-to-r from-white to-blue-50 pt-16 md:pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative min-h-[500px] sm:min-h-[600px] md:h-[700px]">
           {slides.map((slide, index) => (

@@ -168,17 +168,23 @@ const features = [
     ],
     byUseCase: [
       {
-        header: "Fashion businesses and SME's",
+        header: "Freelancers",
         description:
-          "Empower fashion businesses and SMEs to streamline financial operations and extend their financial runway without taking on debt or losing equity.",
-        link: "/use-case"
-        },
+          "Tired of chasing payments, tracking expenses and spending hours on records? Our all-in-one tool lets you send invoices, manage spending, and stay in control of your finances effortlessly, right within your daily workflow. Read more…",
+        link: "/use-case/freelancers",
+      },
       {
-        header: "E-commerce Retailers",
+        header: "Solopreneurs",
         description:
-          "Effortlessly manage finances, and optimize profits for e-commerce retailers. Our app ensures better control over financial operations without the complexities.",
-      
-        link: "/use-case"
+          "When you’re the one handling sales, spend, and salaries, it’s easy for things to fall through the cracks. Verzo helps you keep everything organized in one place so you stay focused on running your business, not running after details. Read more…",
+
+        link: "/use-case/solopreneurs",
+      },
+      {
+        header: "Small businesses",
+        description: "The more your business grows, the harder it is to track who’s paying, what’s being bought, and where money’s going. Verzo brings clarity to your cashflow and keeps your team moving with tools built for small business demands. Read more…",
+
+        link: "/use-case/small-businesses",
       },
     ],
   },
@@ -289,7 +295,7 @@ export function FixedHeader() {
             <Verzologosmall />
           </Link>
           <div className="hidden md:flex items-center gap-14" ref={dropdownRef}>
-            <Link href="/" className="text-black text-lg hover:text-gray-900">
+            <Link href="/about" className="text-black text-lg hover:text-gray-900">
               About us
             </Link>
             {features.map((item) => (
@@ -324,11 +330,11 @@ export function FixedHeader() {
                 </HoverCardTrigger>
 
                 <HoverCardContent
-                  className="w-screen mr-[3px] bg-white flex flex-col gap-y-[31px] shadow-md mt-[16px] rounded-b-[30px] h-[600px]"
+                  className="w-screen mr-[3px] bg-white flex flex-col gap-y-[31px] shadow-md mt-[16px] rounded-b-[30px] h-[650px]"
                   onMouseEnter={() => handleMouseEnter("feature")}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <div className="w-[85%] mx-auto flex flex-row gap-x-[56px] justify-between pt-[45px] pb-[72px] h-full">
+                  <div className="w-[85%] mx-auto flex flex-row gap-x-[56px] justify-between pt-[20px] pb-[72px] h-full">
                     <div className="gap-y-[16px] flex flex-col w-1/3 h-full">
                       <p className="text-[16px] text-primary-greytext pl-[16px]">
                         By Product

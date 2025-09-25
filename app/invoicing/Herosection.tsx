@@ -16,7 +16,7 @@ const slides = [
 
 const HeroSection = () => {
   return (
-    <div className="relative overflow-hidden from-white to-blue-50 pt-16 md:pt-20">
+    <div className="relative overflow-hidden bg-gradient-to-r from-white to-blue-50 pt-16 md:pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative min-h-[500px] sm:min-h-[600px] md:h-[700px]">
           {slides.map((slide, index) => (

@@ -166,3 +166,8 @@ body {
     --radius: 0.5rem;
   }
 }
+
+
+.height-normal {
+  line-height: normal !important;
+}
