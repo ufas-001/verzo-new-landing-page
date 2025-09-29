@@ -19,7 +19,7 @@ const ProblemChallengeSection = () => {
             />
           </svg>
           <p className="text-xl font-light pt-6 leading-relaxed">
-            Couldn't track which customers had paid or still owed money
+            Couldn&apos;t track which customers had paid or still owed money
           </p>
         </div>
         <div className="bg-white rounded-lg shadow-md p-8">
