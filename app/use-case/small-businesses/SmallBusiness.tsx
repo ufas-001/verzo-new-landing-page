@@ -57,7 +57,7 @@ const SmallBusiness = () => {
             </p>
           </div>
           <Image
-            src="/solopreneur.svg"
+            src="/small-businesses.svg"
             alt="Solopreneur Overview"
             width={577}
             height={320}

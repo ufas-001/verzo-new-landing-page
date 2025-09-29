@@ -1,11 +1,11 @@
 const ProblemChallengeSection = () => {
   return (
-    <div className="max-w-3xl mx-auto px-4  py-12 md:py-20">
+    <div className="max-w-6xl mx-auto px-4 py-12 md:py-20">
       <h1 className="text-2xl max-w-3xl text-center mx-auto sm:text-2xl md:text-2xl lg:text-4xl font-medium tracking-tight text-primary-black leading-tight md:leading-[100px]">
         Problem/Challenge
       </h1>
-      <div className="flex space-x-4 pt-12">
-        <div className="w-1/3 border-r border-primary-brandBlue pr-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12">
+        <div className="bg-white rounded-lg shadow-md p-8">
           <svg
             width="48"
             height="48"
@@ -18,11 +18,11 @@ const ProblemChallengeSection = () => {
               fill="#027DFF"
             />
           </svg>
-          <p className="text-[28px] font-[200] pt-8">
-            Couldn’t track which customers had paid or still owed money
+          <p className="text-xl font-light pt-6 leading-relaxed">
+            Couldn't track which customers had paid or still owed money
           </p>
         </div>
-        <div className="w-1/3 border-r border-primary-brandBlue pr-5">
+        <div className="bg-white rounded-lg shadow-md p-8">
           <svg
             width="48"
             height="42"
@@ -35,11 +35,11 @@ const ProblemChallengeSection = () => {
               fill="#027DFF"
             />
           </svg>
-          <p className="text-[28px] font-[200] pt-8">
+          <p className="text-xl font-light pt-6 leading-relaxed">
             Mixed personal spending with business expenses
           </p>
         </div>
-        <div className="w-1/3">
+        <div className="bg-white rounded-lg shadow-md p-8">
           <svg
             width="46"
             height="44"
@@ -52,8 +52,9 @@ const ProblemChallengeSection = () => {
               fill="#027DFF"
             />
           </svg>
-          <p className="text-[28px] font-[200] pt-8">
-            Online payments reduced her cash flow visibility
+          <p className="text-xl font-light pt-6 leading-relaxed">
+            Subscriptions and online ad payments reduced her cash flow
+            visibility
           </p>
         </div>
       </div>

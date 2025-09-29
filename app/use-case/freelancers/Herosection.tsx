@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 const Herosection = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 pt-16 md:pt-20">
-      <div className="relative min-h-[300px] sm:min-h-[400px] md:h-[500px] flex items-center justify-center">
+      <div className="relative min-h-[400px] sm:min-h-[500px] md:h-[600px] flex items-center justify-center">
         <div className="text-center">
           <div className="flex space-x-2 items-center justify-center mb-12">
             <svg
