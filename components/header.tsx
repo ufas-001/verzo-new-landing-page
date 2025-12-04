@@ -182,7 +182,8 @@ const features = [
       },
       {
         header: "Small businesses",
-        description: "The more your business grows, the harder it is to track who’s paying, what’s being bought, and where money’s going. Verzo brings clarity to your cashflow and keeps your team moving with tools built for small business demands. Read more…",
+        description:
+          "The more your business grows, the harder it is to track who’s paying, what’s being bought, and where money’s going. Verzo brings clarity to your cashflow and keeps your team moving with tools built for small business demands. Read more…",
 
         link: "/use-case/small-businesses",
       },
@@ -218,10 +219,15 @@ const resources = [
 export function FixedHeader() {
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
   const [clickedMenu, setClickedMenu] = useState<string | null>(null);
+  // Track how each menu was opened: 'hover' | 'click' | null
+  const [menuOpenMethod, setMenuOpenMethod] = useState<
+    Record<string, "hover" | "click">
+  >({});
   const emailAddress = "technology@verzo.app";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { notificationVisible } = useNotification();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleCloseMobileMenu = () => {
     setMobileMenuOpen(false);
@@ -233,6 +239,7 @@ export function FixedHeader() {
   const handleNavClick = (link: string) => {
     setHoveredMenu(null);
     setClickedMenu(null);
+    setMenuOpenMethod({});
     // Force navigation even if on same page
     if (pathname === link) {
       router.push(link);
@@ -241,29 +248,78 @@ export function FixedHeader() {
   };
 
   const handleMenuClick = (menuName: string) => {
-    if (clickedMenu === menuName) {
+    const isCurrentlyOpen =
+      clickedMenu === menuName || hoveredMenu === menuName;
+
+    if (isCurrentlyOpen) {
+      // Close menu regardless of how it was opened
       setClickedMenu(null);
+      setHoveredMenu(null);
+      setMenuOpenMethod((prev) => {
+        const updated = { ...prev };
+        delete updated[menuName];
+        return updated;
+      });
     } else {
+      // Open menu by click
       setClickedMenu(menuName);
       setHoveredMenu(null); // Clear hover state when clicking
+      setMenuOpenMethod((prev) => ({ ...prev, [menuName]: "click" }));
     }
   };
 
   const handleMouseEnter = (menuName: string) => {
-    if (!clickedMenu) {
-      setHoveredMenu(menuName);
+    // Clear any pending timeout
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
     }
+
+    // Open menu by hover (or keep it open if already open)
+    setHoveredMenu((prevHovered) => {
+      // If menu wasn't already open, mark it as hover-opened
+      // If it was click-opened, we'll keep it open but don't change the method
+      if (!clickedMenu && prevHovered !== menuName) {
+        setMenuOpenMethod((prev) => ({ ...prev, [menuName]: "hover" }));
+      }
+      return menuName;
+    });
   };
 
   const handleMouseLeave = () => {
-    setHoveredMenu(null);
-    setClickedMenu(null); // Also clear clicked menu on mouse leave
+    // Add a small delay before closing to allow movement to dropdown content
+    hoverTimeoutRef.current = setTimeout(() => {
+      // Close all open menus on hover away (flexible: works for both hover-opened and click-opened)
+      setHoveredMenu((currentHovered) => {
+        if (currentHovered) {
+          setMenuOpenMethod((prev) => {
+            const updated = { ...prev };
+            delete updated[currentHovered];
+            return updated;
+          });
+          return null;
+        }
+        return currentHovered;
+      });
+
+      setClickedMenu((currentClicked) => {
+        if (currentClicked) {
+          setMenuOpenMethod((prev) => {
+            const updated = { ...prev };
+            delete updated[currentClicked];
+            return updated;
+          });
+          return null;
+        }
+        return currentClicked;
+      });
+
+      hoverTimeoutRef.current = null;
+    }, 150); // 150ms delay to allow mouse movement to dropdown
   };
 
   const isMenuOpen = (menuName: string) => {
-    return (
-      clickedMenu === menuName || (hoveredMenu === menuName && !clickedMenu)
-    );
+    return clickedMenu === menuName || hoveredMenu === menuName;
   };
 
   // Close dropdown when clicking outside
@@ -273,14 +329,25 @@ export function FixedHeader() {
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
+        // Close all menus regardless of how they were opened
         setClickedMenu(null);
         setHoveredMenu(null);
+        setMenuOpenMethod({});
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
     };
   }, []);
 
@@ -295,7 +362,10 @@ export function FixedHeader() {
             <Verzologosmall />
           </Link>
           <div className="hidden md:flex items-center gap-14" ref={dropdownRef}>
-            <Link href="/about" className="text-black text-lg hover:text-gray-900">
+            <Link
+              href="/about"
+              className="text-black text-lg hover:text-gray-900"
+            >
               About us
             </Link>
             {features.map((item) => (

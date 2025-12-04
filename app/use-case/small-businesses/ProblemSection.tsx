@@ -1,6 +1,6 @@
 const ProblemChallengeSection = () => {
   return (
-    <div className="max-w-3xl mx-auto px-4  py-12 md:py-20">
+    <div className="max-w-6xl mx-auto px-4  py-12 md:py-20">
       <h1 className="text-2xl max-w-3xl text-center mx-auto sm:text-2xl md:text-2xl lg:text-4xl font-medium tracking-tight text-primary-black leading-tight md:leading-[100px]">
         Problem/Challenge
       </h1>
