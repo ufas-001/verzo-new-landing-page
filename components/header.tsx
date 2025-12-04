@@ -219,10 +219,8 @@ const resources = [
 export function FixedHeader() {
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
   const [clickedMenu, setClickedMenu] = useState<string | null>(null);
-  // Track how each menu was opened: 'hover' | 'click' | null
-  const [menuOpenMethod, setMenuOpenMethod] = useState<
-    Record<string, "hover" | "click">
-  >({});
+  // Track how each menu was opened: 'hover' | 'click'
+  const [, setMenuOpenMethod] = useState<Record<string, "hover" | "click">>({});
   const emailAddress = "technology@verzo.app";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { notificationVisible } = useNotification();
