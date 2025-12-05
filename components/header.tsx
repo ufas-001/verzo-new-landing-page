@@ -55,8 +55,9 @@ const features = [
             </defs>
           </svg>
         ),
-        header: "Create - Send Invoices",
-        description: "Create invoices to send them to your customer",
+        header: "Sell Online",
+        description:
+          "sell online and create professional invoices to send to your customers",
         link: "/invoicing",
       },
       {
@@ -168,17 +169,17 @@ const features = [
     ],
     byUseCase: [
       {
-        header: "Freelancers",
-        description:
-          "Tired of chasing payments, tracking expenses and spending hours on records? Our all-in-one tool lets you send invoices, manage spending, and stay in control of your finances effortlessly, right within your daily workflow. Read more…",
-        link: "/use-case/freelancers",
-      },
-      {
-        header: "Solopreneurs",
+        header: "Online Sellers",
         description:
           "When you’re the one handling sales, spend, and salaries, it’s easy for things to fall through the cracks. Verzo helps you keep everything organized in one place so you stay focused on running your business, not running after details. Read more…",
 
         link: "/use-case/solopreneurs",
+      },
+      {
+        header: "Freelancers",
+        description:
+          "Tired of chasing payments, tracking expenses and spending hours on records? Our all-in-one tool lets you send invoices, manage spending, and stay in control of your finances effortlessly, right within your daily workflow. Read more…",
+        link: "/use-case/freelancers",
       },
       {
         header: "Small businesses",
