@@ -16,7 +16,7 @@ export function CallToAction() {
                     Button up your business
                   </h2>
                   <p className="text-3xl font-medium tracking-tight text-white">
-                    with professional invoices.
+                    by selling online and send instant invoices.
                   </p>
                 </div>
                 <Link

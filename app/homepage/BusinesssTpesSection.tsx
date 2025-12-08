@@ -12,10 +12,10 @@ const businessTypes = [
     link: "use-case/freelancers",
   },
   {
-    title: "Solopreneurs",
+    title: "Online Sellers",
     description:
       "When you’re the one handling sales, spend, and salaries, it’s easy for things to fall through the cracks. Verzo helps you keep everything organized in one place so you stay focused on running your business, not running after details.",
-    link: "use-case/solopreneurs",
+    link: "use-case/online-sellers",
   },
   {
     title: "Small businesses",

@@ -37,7 +37,7 @@ const InvoicingFeatures = () => {
       <div className="max-w-7xl mx-auto px-4">
         {/* Main heading */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-center mb-8 md:mb-12 leading-tight">
-          Start with the best invoicing tool
+          Sell Online with the best invoicing tool
         </h2>
 
         {/* Feature highlights */}

@@ -39,7 +39,7 @@ const Herosection = () => {
                 </linearGradient>
               </defs>
             </svg>
-            <p className="text-xl text-primary-brandBlue">Solopreneurs</p>
+            <p className="text-xl text-primary-brandBlue">Online sellers</p>
           </div>
           <h1 className="text-2xl max-w-3xl mx-auto sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-primary-black leading-tight md:leading-[100px] ">
             How a One-Person Business Stays in Control of Cash Flow

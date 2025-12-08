@@ -5,10 +5,10 @@ import InvoiceHero from "@/public/invoiceHero"; // Importing the invoice hero im
 // const src = "https://verzo.fra1.cdn.digitaloceanspaces.com/Hero.png";
 const slides = [
   {
-    header: "Invoice",
-    title: "From Invoice to Income.",
+    header: "Sell Online",
+    title: "From Online Sale to Instant Income.",
     description:
-      "Create clean, professional invoices that instantly reflect in your sales once payment is recorded.",
+      "Sell online, send professional invoices, and see every paid order reflects in your sales immediately.",
     image: InvoiceHero, // Image in public directory
     cta: "Get 30 days free",
   },
